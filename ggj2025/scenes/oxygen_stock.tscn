@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqbyujcfb1due"]
+
+[ext_resource type="Script" path="res://scripts/oxygen_stock.gd" id="1_tx5h2"]
+
+[node name="OxygenStock" type="Node2D"]
+position = Vector2(556, 628)
+script = ExtResource("1_tx5h2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="BubblesSpawnPosition" type="Node2D" parent="."]
+position = Vector2(0, -66.96)
+metadata/_edit_lock_ = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
