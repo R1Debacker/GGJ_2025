@@ -421,7 +421,6 @@ animations = [{
 }]
 
 [node name="Courant" type="Area2D"]
-position = Vector2(163, -161)
 script = ExtResource("1_7tn37")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
