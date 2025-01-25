@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://orjgg1eq2yw6"]
+[gd_scene load_steps=3 format=3 uid="uid://buac86mfls7xx"]
 
 [ext_resource type="Script" path="res://autoloads/Game.gd" id="1_06ibk"]
 [ext_resource type="AudioStream" uid="uid://ctx0djew58i1k" path="res://HugoLeBo/UI_Menus/bubbles_A#_major.wav" id="2_bl4pm"]
