@@ -4,7 +4,7 @@ extends Node2D
 const COLLECTABLE_BUBBLE = preload("res://scenes/collectable_bubble.tscn")
 
 func _ready() -> void:
-	initial_stock = GAME.nb_players * 1000.0
+	initial_stock = 1000.0
 	_spawn_bubble()
 	
 

@@ -1,51 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvbh81n2hbdj0"]
+[gd_scene load_steps=2 format=3 uid="uid://dvbh81n2hbdj0"]
 
-[ext_resource type="Script" path="res://Drazic/player.gd" id="1_ritav"]
-[ext_resource type="Texture2D" uid="uid://6l2bxpan17n4" path="res://assets/sprites/icon.svg" id="1_tmrf6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejvhh"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_42hd7"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_cy70y"]
+[ext_resource type="PackedScene" uid="uid://dcjrfeay866pw" path="res://Drazic/player.tscn" id="1_ejm33"]
 
 [node name="Test" type="Node2D"]
 position = Vector2(65, 33)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
-
-[node name="Player" type="Node2D" parent="."]
-
-[node name="Player" type="CharacterBody2D" parent="Player"]
-motion_mode = 1
-script = ExtResource("1_ritav")
-
-[node name="PlayerCollisionShape2D" type="CollisionShape2D" parent="Player/Player"]
-shape = SubResource("RectangleShape2D_ejvhh")
-
-[node name="PlayerSprite" type="Sprite2D" parent="Player/Player"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_tmrf6")
-
-[node name="Bubble" type="RigidBody2D" parent="Player"]
-position = Vector2(0, 10)
-physics_material_override = SubResource("PhysicsMaterial_42hd7")
-gravity_scale = 0.0
-can_sleep = false
-linear_damp = 10.0
-
-[node name="BubbleSprite" type="Sprite2D" parent="Player/Bubble"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_tmrf6")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Bubble"]
-shape = SubResource("CircleShape2D_cy70y")
-
-[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Player"]
-node_a = NodePath("../Player")
-node_b = NodePath("../Bubble")
-bias = 0.9
-length = 10.0
-stiffness = 64.0
-damping = 0.01
+[node name="Player" parent="." instance=ExtResource("1_ejm33")]
+position = Vector2(240, 176)
