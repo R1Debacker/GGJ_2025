@@ -55,7 +55,8 @@ func _follow(delta: float):
 	
 func _patrol_movement(delta: float):
 	
-	enemy_sprite.flip_h = direction_idle_movement.x<0
+	look_at(position+50.0*direction_idle_movement)
+	enemy_sprite.flip_v = direction_idle_movement.x<0
 	global_position+=direction_idle_movement*delta*enemy_speed
 	
 func _going_back(delta: float):

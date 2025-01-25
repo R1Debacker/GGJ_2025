@@ -21,6 +21,7 @@ var device_idx : int = 0
 var is_dash_pressed = true
 
 func _ready() -> void:
+
 	default_length = (self.global_position - bubble.global_position).length() / bubble.bubble_scale
 
 func _process(delta: float) -> void:
@@ -67,6 +68,7 @@ func dash_logic():
 	return _velocity
 
 func _physics_process(delta: float) -> void:
+	
 	var _velocity = Vector2(0,0)
 	
 	_velocity += dash_logic()

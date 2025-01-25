@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7eti3hbibjup"]
+
+[ext_resource type="Texture2D" uid="uid://b715eft6pyv33" path="res://assets/sprites/underwater-diving-files/PNG/enemies/fish-dart.png" id="1_7cd4t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6oi7y"]
+radius = 6.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wbegi"]
+radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chlym"]
+atlas = ExtResource("1_7cd4t")
+region = Rect2(0, 0, 39, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkg8o"]
+atlas = ExtResource("1_7cd4t")
+region = Rect2(39, 0, 39, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7qga"]
+atlas = ExtResource("1_7cd4t")
+region = Rect2(78, 0, 39, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7qky"]
+atlas = ExtResource("1_7cd4t")
+region = Rect2(117, 0, 39, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5bsx7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chlym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkg8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7qga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7qky")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_30sjg"]
+radius = 227.002
+
+[node name="DartFish" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6oi7y")
+
+[node name="BodyArea2D" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea2D"]
+position = Vector2(1, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_wbegi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_5bsx7")
+frame = 1
+frame_progress = 0.26
+metadata/_edit_lock_ = true
+
+[node name="RadarArea2D" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RadarArea2D"]
+shape = SubResource("CircleShape2D_30sjg")

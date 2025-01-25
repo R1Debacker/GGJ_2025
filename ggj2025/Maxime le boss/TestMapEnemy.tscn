@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://y3degk013o8y" path="res://scenes/map.tscn" id="1_o6b3x"]
 [ext_resource type="PackedScene" uid="uid://bpj5rq6vpryhv" path="res://scenes/enemy.tscn" id="2_dmwdw"]
 [ext_resource type="PackedScene" uid="uid://dyn8uwh07g3p8" path="res://scenes/submarine.tscn" id="3_wxspl"]
-[ext_resource type="PackedScene" uid="uid://bqbyujcfb1due" path="res://scenes/oxygen_stock.tscn" id="4_pjpvy"]
+[ext_resource type="PackedScene" uid="uid://b3em41xciomo0" path="res://scenes/oxygen_stock.tscn" id="4_pjpvy"]
 [ext_resource type="PackedScene" path="res://scenes/water_shader.tscn" id="5_hahld"]
-[ext_resource type="PackedScene" uid="uid://dcjrfeay866pw" path="res://Drazic/player.tscn" id="6_h716r"]
+[ext_resource type="PackedScene" uid="uid://bvet8d0s15fg7" path="res://scenes/player.tscn" id="6_h716r"]
 
 [node name="Node2D" type="Node2D"]
 metadata/_edit_lock_ = true
