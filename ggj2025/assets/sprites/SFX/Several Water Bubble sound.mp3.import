@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://qx2grpq0q4ya"
+path="res://.godot/imported/Several Water Bubble sound.mp3-cbebef80666eeb8f3bebf7e393bf07c8.mp3str"
+
+[deps]
+
+source_file="res://assets/sprites/SFX/Several Water Bubble sound.mp3"
+dest_files=["res://.godot/imported/Several Water Bubble sound.mp3-cbebef80666eeb8f3bebf7e393bf07c8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

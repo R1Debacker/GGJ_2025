@@ -1,42 +1,42 @@
 [gd_scene load_steps=10 format=3 uid="uid://bpj5rq6vpryhv"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_ugw0d"]
-[ext_resource type="Texture2D" uid="uid://b715eft6pyv33" path="res://assets/sprites/underwater-diving-files/PNG/enemies/fish-dart.png" id="2_0jput"]
+[ext_resource type="Texture2D" uid="uid://byoyjmrflddx1" path="res://assets/sprites/underwater-diving-files/PNG/enemies/fish.png" id="2_iih3s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hc2q5"]
 radius = 17.0
 height = 76.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vlele"]
-atlas = ExtResource("2_0jput")
-region = Rect2(0, 0, 39, 20)
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1krk"]
+atlas = ExtResource("2_iih3s")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5yln0"]
-atlas = ExtResource("2_0jput")
-region = Rect2(39, 0, 39, 20)
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2itw"]
+atlas = ExtResource("2_iih3s")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_juoj3"]
-atlas = ExtResource("2_0jput")
-region = Rect2(78, 0, 39, 20)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj1qx"]
+atlas = ExtResource("2_iih3s")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i4ilq"]
-atlas = ExtResource("2_0jput")
-region = Rect2(117, 0, 39, 20)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsgx4"]
+atlas = ExtResource("2_iih3s")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ae6jm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vlele")
+"texture": SubResource("AtlasTexture_h1krk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5yln0")
+"texture": SubResource("AtlasTexture_n2itw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_juoj3")
+"texture": SubResource("AtlasTexture_vj1qx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i4ilq")
+"texture": SubResource("AtlasTexture_bsgx4")
 }],
 "loop": true,
 "name": &"Idle",
@@ -50,7 +50,6 @@ radius = 343.111
 collision_layer = 4
 gravity_scale = 0.0
 script = ExtResource("1_ugw0d")
-speed_factor = 1.0
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -64,7 +63,6 @@ position = Vector2(-7.62939e-06, 0)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ae6jm")
 animation = &"Idle"
-frame = 1
 frame_progress = 0.53864
 
 [node name="RadarArea" type="Area2D" parent="."]
@@ -81,6 +79,10 @@ one_shot = true
 [node name="Beak" type="Node2D" parent="."]
 position = Vector2(37, 1)
 
+[node name="IdleMovement" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="RadarArea" to="." method="_on_radar_area_body_entered"]
 [connection signal="timeout" from="FollowingTime" to="." method="_on_following_time_timeout"]
+[connection signal="timeout" from="IdleMovement" to="." method="_on_idle_movement_timeout"]

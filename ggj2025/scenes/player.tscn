@@ -114,7 +114,6 @@ shape = SubResource("CircleShape2D_lnhw8")
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
 motion_mode = 1
-script = ExtResource("1_yl08c")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
 polygon = PackedVector2Array(52, 16, 64, 40, 42, 48, 8, 52, -18, 40, -22, 26, 2, 22, -48, 10, -50, -4, 6, -12, 36, 0)

@@ -17,6 +17,7 @@ config/icon="res://assets/sprites/icon.svg"
 
 [autoload]
 
+GAME="*res://autoloads/Game.gd"
 Game="*res://autoloads/game.tscn"
 
 [display]

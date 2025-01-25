@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ctas03u4qtxhi"
+path="res://.godot/imported/bubble-noize Filling or Victory.mp3-6999928c9dc643f2fdaff7a10a4d35ae.mp3str"
+
+[deps]
+
+source_file="res://assets/sprites/SFX/bubble-noize Filling or Victory.mp3"
+dest_files=["res://.godot/imported/bubble-noize Filling or Victory.mp3-6999928c9dc643f2fdaff7a10a4d35ae.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
