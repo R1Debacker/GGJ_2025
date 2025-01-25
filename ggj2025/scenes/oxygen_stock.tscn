@@ -55,8 +55,6 @@ autostart = true
 [node name="SpawnPosition" type="Node2D" parent="."]
 position = Vector2(0, -114.95)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="TextureProgressBar" parent="." instance=ExtResource("3_dox3i")]
 offset_left = -166.0
 offset_top = 0.0
