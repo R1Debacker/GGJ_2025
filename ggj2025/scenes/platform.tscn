@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bj3q2rhej08fs"]
+
+[node name="Platform" type="StaticBody2D"]
+collision_mask = 6
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

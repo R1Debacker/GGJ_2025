@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4x83thvwdvtk"]
+
+[ext_resource type="PackedScene" uid="uid://c3knjy71udjcr" path="res://scenes/bubble.tscn" id="1_2dkt7"]
+[ext_resource type="Script" path="res://scripts/moving_bubble.gd" id="2_op5hq"]
+
+[node name="Bubble" instance=ExtResource("1_2dkt7")]
+script = ExtResource("2_op5hq")
+x_speed = 5.0
+y_speed = 20.0
+
+[node name="LifeTimer" type="Timer" parent="." index="2"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="ChangeDirectionTimer" type="Timer" parent="." index="3"]
+autostart = true

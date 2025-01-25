@@ -3,7 +3,7 @@ extends Node2D
 @export var filling_speed := 50.0
 @export var target_oxygen_level := 1000.0
 
-var current_oxygen_level := 500.0
+var current_oxygen_level := 0.0
 var current_shrimp : CharacterBody2D = null
 
 func _ready() -> void:
