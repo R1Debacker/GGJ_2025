@@ -1,46 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqbyujcfb1due"]
 
 [ext_resource type="Script" path="res://scripts/oxygen_stock.gd" id="1_tx5h2"]
-[gd_scene load_steps=8 format=3 uid="uid://bqbyujcfb1due"]
-
-[ext_resource type="Script" path="res://scripts/oxygen_stock.gd" id="1_tx5h2"]
-[ext_resource type="Texture2D" uid="uid://bxwncgpw6fst8" path="res://assets/sprites/OxygenStockStandardSpriteSheet.png" id="2_14xyo"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_th05f"]
-atlas = ExtResource("2_14xyo")
-region = Rect2(0, 3, 484, 281)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fkm62"]
-atlas = ExtResource("2_14xyo")
-region = Rect2(484, 3, 484, 281)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vvxtr"]
-atlas = ExtResource("2_14xyo")
-region = Rect2(0, 284, 484, 281)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kic44"]
-atlas = ExtResource("2_14xyo")
-region = Rect2(484, 284, 484, 281)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_65jl5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_th05f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fkm62")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vvxtr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kic44")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 3.0
-}]
 
 [node name="OxygenStock" type="Node2D"]
 script = ExtResource("1_tx5h2")
