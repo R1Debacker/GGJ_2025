@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Pas mal musique fond.mp3-1d89774ca7aab51a338d
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

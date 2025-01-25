@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5h6j1qra2edn"]
+
+[ext_resource type="AudioStream" uid="uid://dl0xmt1gltwk5" path="res://assets/sprites/SFX/Borne 49.3 a la con.mp3" id="1_s23vg"]
+[ext_resource type="AudioStream" uid="uid://3e4n06c0xkli" path="res://assets/sprites/SFX/Pas mal musique fond.mp3" id="2_t20nn"]
+
+[node name="DiscoBorn" type="Node2D"]
+
+[node name="BackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_s23vg")
+pitch_scale = 0.88
+bus = &"Ellie"
+parameters/looping = true
+
+[node name="EllieSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_t20nn")
+autoplay = true
+bus = &"Fond"

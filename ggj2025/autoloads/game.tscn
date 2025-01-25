@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://buac86mfls7xx"]
+[gd_scene load_steps=4 format=3 uid="uid://buac86mfls7xx"]
 
 [ext_resource type="Script" path="res://autoloads/Game.gd" id="1_06ibk"]
 [ext_resource type="AudioStream" uid="uid://ctx0djew58i1k" path="res://HugoLeBo/UI_Menus/bubbles_A#_major.wav" id="2_bl4pm"]
+[ext_resource type="AudioStream" uid="uid://dl0xmt1gltwk5" path="res://assets/sprites/SFX/Borne 49.3 a la con.mp3" id="3_ryfkl"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_06ibk")
@@ -10,3 +11,9 @@ script = ExtResource("1_06ibk")
 
 [node name="menu_button_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_bl4pm")
+
+[node name="BackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ryfkl")
+pitch_scale = 0.88
+bus = &"Ellie"
+parameters/looping = true
