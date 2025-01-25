@@ -1,7 +1,7 @@
 [gd_scene load_steps=63 format=3 uid="uid://bey8i8t7fmviv"]
 
 [ext_resource type="Script" path="res://HugoLeBo/Scripts/BoostZone.gd" id="1_7tn37"]
-[ext_resource type="Texture2D" uid="uid://ddatbvpwwg0qb" path="res://HugoLeBo/Scenes/Result.png" id="2_16wyg"]
+[ext_resource type="Texture2D" uid="uid://dlhwrksf0ovf7" path="res://HugoLeBo/Courant Scene/FastCourrant_Spritesheet.png" id="2_16wyg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jb7m8"]
 size = Vector2(267.685, 18.9324)
@@ -433,7 +433,7 @@ metadata/_edit_lock_ = true
 sprite_frames = SubResource("SpriteFrames_f5la4")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame_progress = 0.473476
+frame_progress = 0.17054
 flip_h = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
