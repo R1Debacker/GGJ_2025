@@ -3,7 +3,7 @@ class_name Bubble
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-const SPLIT_KEEP_PERCENT = 0.8
+const SPLIT_KEEP_PERCENT = 0.7
 
 var bubble_scale : float = 1
 var AIR_VOLUME_SCALE : float = 1
@@ -17,18 +17,19 @@ func _on_body_entered(body: Node) -> void:
 	if body.has_method("collect"):
 		if self == body.bubble:
 			return
-		body.collect(self.air_volume)
-		_burst_bubble()
+		body.collect(self)
 
 func _burst_bubble():
 	queue_free()
 
-func set_volume(new_vol):
+func set_volume(new_vol : float):
+	if new_vol < 1e-2:
+		_burst_bubble()
 	bubble_scale = sqrt(new_vol / PI)
 	self.scale = Vector2(bubble_scale / air_factor , bubble_scale / air_factor)
 	self.air_volume = new_vol
 
-func add_volume(added_vol):
+func add_volume(added_vol : float):
 	self.bubble_scale = sqrt((added_vol + air_volume)/PI)
 	self.set_volume((self.bubble_scale**2)*PI)
 
@@ -48,4 +49,4 @@ static func spawn_bubble(parent: Node2D, position: Vector2, bubble_vol: float, m
 	current_bubble.set_volume(bubble_vol)
 	parent.add_child(current_bubble)
 	parent.move_child(current_bubble, 0)
-	current_bubble = null
+	return current_bubble
