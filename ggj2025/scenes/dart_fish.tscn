@@ -1,0 +1,95 @@
+[gd_scene load_steps=11 format=3 uid="uid://b80bapp00e1eh"]
+
+[ext_resource type="Texture2D" uid="uid://b715eft6pyv33" path="res://assets/sprites/underwater-diving-files/PNG/enemies/fish-dart.png" id="1_j785q"]
+[ext_resource type="Script" path="res://scripts/dart_fish.gd" id="1_r35t1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3wjl"]
+atlas = ExtResource("1_j785q")
+region = Rect2(0, 0, 39, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd1xq"]
+atlas = ExtResource("1_j785q")
+region = Rect2(39, 0, 39, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa76a"]
+atlas = ExtResource("1_j785q")
+region = Rect2(78, 0, 39, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2okqs"]
+atlas = ExtResource("1_j785q")
+region = Rect2(117, 0, 39, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5x8vc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3wjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd1xq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa76a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2okqs")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5bxbr"]
+radius = 13.0
+height = 62.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y6kb0"]
+radius = 468.181
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ff3u"]
+radius = 2.0
+height = 18.0
+
+[node name="DartFish" type="RigidBody2D"]
+collision_layer = 4
+gravity_scale = 0.0
+script = ExtResource("1_r35t1")
+enemy_speed = 500.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_5x8vc")
+animation = &"Idle"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_5bxbr")
+
+[node name="RadarArea2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RadarArea2D"]
+shape = SubResource("CircleShape2D_y6kb0")
+
+[node name="NoseArea2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoseArea2D"]
+position = Vector2(25, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3ff3u")
+
+[node name="TimeBeforeCharge" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="PatrolTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="RadarArea2D" to="." method="_on_radar_area_2d_body_entered"]
+[connection signal="body_entered" from="NoseArea2D" to="." method="_on_nose_area_2d_body_entered"]
+[connection signal="timeout" from="TimeBeforeCharge" to="." method="_on_time_before_charge_timeout"]
+[connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]

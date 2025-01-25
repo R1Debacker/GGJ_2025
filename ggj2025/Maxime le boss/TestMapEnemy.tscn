@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://tcqlesy5nsue"]
+[gd_scene load_steps=8 format=3 uid="uid://tcqlesy5nsue"]
 
 [ext_resource type="PackedScene" uid="uid://y3degk013o8y" path="res://scenes/map.tscn" id="1_o6b3x"]
 [ext_resource type="PackedScene" uid="uid://bpj5rq6vpryhv" path="res://scenes/enemy.tscn" id="2_dmwdw"]
+[ext_resource type="PackedScene" uid="uid://b80bapp00e1eh" path="res://scenes/dart_fish.tscn" id="3_o1lg0"]
 [ext_resource type="PackedScene" uid="uid://dyn8uwh07g3p8" path="res://scenes/submarine.tscn" id="3_wxspl"]
-[ext_resource type="PackedScene" uid="uid://bqbyujcfb1due" path="res://scenes/oxygen_stock.tscn" id="4_pjpvy"]
+[ext_resource type="PackedScene" uid="uid://b3em41xciomo0" path="res://scenes/oxygen_stock.tscn" id="4_pjpvy"]
 [ext_resource type="PackedScene" path="res://scenes/water_shader.tscn" id="5_hahld"]
-[ext_resource type="PackedScene" uid="uid://dcjrfeay866pw" path="res://Drazic/player.tscn" id="6_h716r"]
+[ext_resource type="PackedScene" uid="uid://dcjrfeay866pw" path="res://scenes/player.tscn" id="6_h716r"]
 
 [node name="Node2D" type="Node2D"]
 metadata/_edit_lock_ = true
@@ -14,8 +15,11 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Enemy" parent="." instance=ExtResource("2_dmwdw")]
-position = Vector2(1168, 381)
-speed_factor = 0.6
+position = Vector2(865, 433)
+
+[node name="DartFish" parent="." instance=ExtResource("3_o1lg0")]
+position = Vector2(1025, 349)
+enemy_speed = 400.0
 
 [node name="Submarine" parent="." instance=ExtResource("3_wxspl")]
 position = Vector2(1882, 483)
@@ -26,6 +30,8 @@ position = Vector2(265, 808)
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" parent="." instance=ExtResource("5_hahld")]
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("6_h716r")]
 position = Vector2(339, 337)
+metadata/_edit_lock_ = true
