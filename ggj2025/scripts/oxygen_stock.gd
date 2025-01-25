@@ -4,6 +4,7 @@ extends Node2D
 const COLLECTABLE_BUBBLE = preload("res://scenes/collectable_bubble.tscn")
 
 func _ready() -> void:
+	$Sprite2D.play("Idle")
 	initial_stock = 1000.0
 	_spawn_bubble()
 	
@@ -21,3 +22,4 @@ func _spawn_bubble():
 		collectable_bubble._set_scale(bubble_size)
 		initial_stock -= bubble_size * 10.0
 		add_child(collectable_bubble)
+		move_child(collectable_bubble, 0)
