@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cwfahi7ywng40" path="res://assets/sprites/Mossy Tileset/Mossy - Hanging Plants.png" id="5_kc8y7"]
 [ext_resource type="Texture2D" uid="uid://5eexvax0px7c" path="res://assets/sprites/Mossy Tileset/Mossy - MossyHills.png" id="5_pq5fa"]
 [ext_resource type="PackedScene" uid="uid://bey8i8t7fmviv" path="res://HugoLeBo/Courant Scene/FastCourrant.tscn" id="8_aoppw"]
-[ext_resource type="PackedScene" path="res://scenes/platform.tscn" id="8_xooeg"]
+[ext_resource type="PackedScene" uid="uid://bj3q2rhej08fs" path="res://scenes/platform.tscn" id="8_xooeg"]
 [ext_resource type="Texture2D" uid="uid://sdoua8lc2p27" path="res://assets/sprites/Mossy Tileset/rounded_platform.png" id="9_vj3dm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gvxk0"]

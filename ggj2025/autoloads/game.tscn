@@ -15,5 +15,4 @@ stream = ExtResource("2_bl4pm")
 [node name="BackSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_ryfkl")
 pitch_scale = 0.88
-bus = &"Ellie"
 parameters/looping = true
