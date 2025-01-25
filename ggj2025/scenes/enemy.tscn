@@ -50,7 +50,9 @@ radius = 343.111
 collision_layer = 4
 gravity_scale = 0.0
 script = ExtResource("1_ugw0d")
+damage_amount = null
 speed_factor = 1.0
+distance_to_touch = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -6,6 +6,8 @@ extends Node2D
 var enemy_speed := 300.0
 var current_target : Node2D = null
 var origin_position := Vector2.ZERO
+var target_position_left := Vector2.ZERO
+var target_position_right := Vector2.ZERO
 @onready var following_time: Timer = $FollowingTime
 @onready var enemy_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -21,7 +23,8 @@ var state :=STATE.IDLE
 func _ready() -> void:
 	enemy_sprite.play('Idle')
 	origin_position=global_position
-	pass # Replace with function body.
+	target_position_left=global_position-Vector2(300,0)
+	target_position_right=global_position+Vector2(300,0)
 
 func _on_body_entered(body: Node) -> void:
 	
@@ -49,10 +52,21 @@ func _follow(delta: float):
 	
 func _idle_movement(delta: float):
 	
-	look_at(origin_position)
-	enemy_sprite.flip_v = origin_position.x<global_position.x
-	global_position=global_position.move_toward(origin_position,delta*enemy_speed)
+	if $Beak.global_position.distance_to(origin_position)<3.0:
+		
+		if $Beak.global_position.x>global_position.x:
+
+			global_position=global_position.move_toward(target_position_right,delta*enemy_speed)
 	
+		else:
+			global_position=global_position.move_toward(target_position_left,delta*enemy_speed)
+	
+	else:
+		
+		look_at(origin_position)
+		enemy_sprite.flip_v = origin_position.x<global_position.x
+		global_position=global_position.move_toward(origin_position,delta*enemy_speed)
+		
 	
 func _physics_process(delta: float) -> void:
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://48ao3ikvbi86"
+path="res://.godot/imported/bubble sound dash.mp3-f9aae661c472b7e2dc27259e72919232.mp3str"
+
+[deps]
+
+source_file="res://assets/sprites/SFX/bubble sound dash.mp3"
+dest_files=["res://.godot/imported/bubble sound dash.mp3-f9aae661c472b7e2dc27259e72919232.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
