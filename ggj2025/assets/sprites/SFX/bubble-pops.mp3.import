@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/bubble-pops.mp3-85bc46d3f60ca7932746662dc4312
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

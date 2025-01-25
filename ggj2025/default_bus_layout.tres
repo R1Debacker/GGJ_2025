@@ -27,9 +27,9 @@ resource_name = "Filter"
 resource_name = "Reverb"
 
 [resource]
-bus/0/volume_db = -80.0
+bus/0/volume_db = -3.11736
 bus/0/effect/0/effect = SubResource("AudioEffectReverb_phqm0")
-bus/0/effect/0/enabled = true
+bus/0/effect/0/enabled = false
 bus/0/effect/1/effect = SubResource("AudioEffectPhaser_mqhaf")
 bus/0/effect/1/enabled = false
 bus/0/effect/2/effect = SubResource("AudioEffectStereoEnhance_qpl18")
