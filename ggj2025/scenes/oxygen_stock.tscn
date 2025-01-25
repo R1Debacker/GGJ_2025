@@ -1,10 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqbyujcfb1due"]
+[gd_scene load_steps=2 format=3 uid="uid://bqbyujcfb1due"]
 
 [ext_resource type="Script" path="res://scripts/oxygen_stock.gd" id="1_tx5h2"]
-[ext_resource type="PackedScene" uid="uid://dcjrfeay866pw" path="res://Drazic/player.tscn" id="2_2pr2w"]
 
 [node name="OxygenStock" type="Node2D"]
-position = Vector2(556, 628)
 script = ExtResource("1_tx5h2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -17,8 +15,5 @@ autostart = true
 [node name="BubblesSpawnPosition" type="Node2D" parent="."]
 position = Vector2(0, -66.96)
 metadata/_edit_lock_ = true
-
-[node name="Player" parent="." instance=ExtResource("2_2pr2w")]
-position = Vector2(-214, -176)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
