@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://orjgg1eq2yw6"]
+
+[ext_resource type="Script" path="res://autoloads/Game.gd" id="1_06ibk"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_06ibk")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

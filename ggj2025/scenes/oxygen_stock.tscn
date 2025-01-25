@@ -4,6 +4,7 @@
 
 [node name="OxygenStock" type="Node2D"]
 script = ExtResource("1_tx5h2")
+initial_stock = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 metadata/_edit_lock_ = true
