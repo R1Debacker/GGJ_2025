@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3em41xciomo0"]
+[gd_scene load_steps=10 format=3 uid="uid://b3em41xciomo0"]
 
 [ext_resource type="Texture2D" uid="uid://bxwncgpw6fst8" path="res://assets/sprites/OxygenStockStandardSpriteSheet.png" id="1_4i8vh"]
 [ext_resource type="Script" path="res://scripts/oxygen_stock.gd" id="1_tx5h2"]
 [ext_resource type="PackedScene" uid="uid://dkldwn0auf1s7" path="res://HugoLeBo/UI_Game/JaugeO2_TextureBar.tscn" id="3_dox3i"]
+[ext_resource type="AudioStream" uid="uid://cfk7iiqx83i0m" path="res://assets/sprites/SFX/big-bubble.mp3" id="4_tmnu2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qibg2"]
 atlas = ExtResource("1_4i8vh")
@@ -63,5 +64,13 @@ offset_bottom = 8.0
 rotation = -1.5708
 scale = Vector2(5, 5)
 script = null
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-166, 0)
+rotation = -1.5708
+scale = Vector2(5, 5)
+stream = ExtResource("4_tmnu2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
