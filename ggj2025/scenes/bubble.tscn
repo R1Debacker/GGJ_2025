@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c3knjy71udjcr"]
 
-[ext_resource type="Script" path="res://Drazic/bubble.gd" id="1_wpub6"]
+[ext_resource type="Script" path="res://scripts/bubble.gd" id="1_wpub6"]
 [ext_resource type="Texture2D" uid="uid://rkdi136brshn" path="res://assets/sprites/bulle un peu stylé.png" id="2_c8pr8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ik8a"]
@@ -21,8 +21,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_q87wy"]
 radius = 10.0499
 
-[node name="Bubble" type="RigidBody2D"]
-gravity_scale = 0.0
+[node name="Bubble" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_wpub6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

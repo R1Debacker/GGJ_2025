@@ -1,9 +1,9 @@
 extends CharacterBody2D
 class_name Player
 
-@onready var bubble: Bubble = $"../Bubble"
+
+@onready var bubble: Bubble = $"../Bubble/Bubble"
 @onready var damped_spring_joint_2d: DampedSpringJoint2D = $"../DampedSpringJoint2D"
-@onready var bubble_sprite: AnimatedSprite2D = $"../Bubble/BubbleSprite"
 @onready var player_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision: CollisionPolygon2D = $CollisionPolygon2D
 
@@ -24,13 +24,19 @@ func _ready() -> void:
 	default_length = (self.global_position - bubble.global_position).length() / bubble.bubble_scale
 
 func _process(delta: float) -> void:
-	damped_spring_joint_2d.length = default_length * bubble.bubble_scale
-	damped_spring_joint_2d.rest_length = default_length * bubble.bubble_scale
+	damped_spring_joint_2d.length = default_length * bubble.bubble_scale * 0.8
+	damped_spring_joint_2d.rest_length = default_length * bubble.bubble_scale * 0.8
 	
 	var target = self.global_position - self.velocity.normalized()
 	self.look_at(target)
 	
-	if self.velocity.length() > 50:
+	if self.velocity.length() > 600 and self.player_sprite.animation != "dash":
+		self.player_sprite.play("dash")
+	if self.player_sprite.animation == "dash" and self.velocity.length() > 450:
+		pass
+	elif self.velocity.length() > 300:
+		self.player_sprite.play("fast")
+	elif self.velocity.length() > 50:
 		self.player_sprite.play("swimming")
 	else:
 		self.player_sprite.play("idle")
@@ -57,7 +63,7 @@ func dash_logic():
 		self.timestamp_last_use_dash = Time.get_ticks_msec()
 		var dash_dir = (self.global_position - bubble.global_position).normalized()
 		_velocity += dash_dir * dash_speed
-		Bubble.spawn_bubble(get_tree().current_scene, bubble.global_position, 1)
+		bubble.split()
 	return _velocity
 
 func _physics_process(delta: float) -> void:
