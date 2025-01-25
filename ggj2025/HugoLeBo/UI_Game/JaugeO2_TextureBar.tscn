@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkldwn0auf1s7"]
+
+[ext_resource type="Texture2D" uid="uid://ci6g6rst8o8k0" path="res://HugoLeBo/UI_Game/progress bar least rounded over.png" id="1_8ilub"]
+[ext_resource type="Texture2D" uid="uid://bypj7c26h36c6" path="res://HugoLeBo/UI_Game/progress bar least rounded progress dark green.png" id="2_753uh"]
+[ext_resource type="Script" path="res://HugoLeBo/UI_Game/O2progress_bar.gd" id="3_2touh"]
+
+[node name="TextureProgressBar" type="TextureProgressBar"]
+offset_left = 156.0
+offset_top = -64.0
+offset_right = 188.0
+offset_bottom = -56.0
+max_value = 1000.0
+texture_under = ExtResource("1_8ilub")
+texture_progress = ExtResource("2_753uh")
+script = ExtResource("3_2touh")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 1.0
+offset_right = 93.0
+offset_bottom = 84.0
+scale = Vector2(0.075, 0.075)
+theme_override_font_sizes/font_size = 60
+text = "O2"
+horizontal_alignment = 1
