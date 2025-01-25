@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjtf3rftw3r2f"]
+[gd_scene load_steps=6 format=3 uid="uid://cjtf3rftw3r2f"]
 
-[ext_resource type="PackedScene" uid="uid://bfgc4ieq6gxuj" path="res://scenes/map.tscn" id="1_vc81k"]
-[ext_resource type="PackedScene" uid="uid://b3em41xciomo0" path="res://scenes/oxygen_stock.tscn" id="2_c1llh"]
+[ext_resource type="PackedScene" path="res://scenes/map.tscn" id="1_vc81k"]
+[ext_resource type="PackedScene" uid="uid://bqbyujcfb1due" path="res://scenes/oxygen_stock.tscn" id="2_c1llh"]
 [ext_resource type="PackedScene" uid="uid://dyn8uwh07g3p8" path="res://scenes/submarine.tscn" id="4_h3427"]
-[ext_resource type="PackedScene" uid="uid://bjinpqjoklw6o" path="res://scenes/water_shader.tscn" id="5_w7s64"]
+[ext_resource type="PackedScene" uid="uid://dcjrfeay866pw" path="res://Drazic/player.tscn" id="5_ssu42"]
+[ext_resource type="PackedScene" path="res://scenes/water_shader.tscn" id="5_w7s64"]
 
 [node name="TestErwann" type="Node2D"]
 
@@ -18,3 +19,6 @@ position = Vector2(270, 807)
 
 [node name="Sprite2D" parent="." instance=ExtResource("5_w7s64")]
 metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("5_ssu42")]
+position = Vector2(391, 456)

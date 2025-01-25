@@ -110,7 +110,7 @@ position = Vector2(18, 2)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_tjmg8")
 animation = &"swimming"
-frame_progress = 0.115378
+frame_progress = 0.158274
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
 node_a = NodePath("../Player")

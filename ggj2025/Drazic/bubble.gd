@@ -17,3 +17,4 @@ static func spawn_bubble(parent: Node2D, position: Vector2, bubble_size: float):
 	collectable_bubble.position = position
 	collectable_bubble._set_scale(bubble_size)
 	parent.add_child(collectable_bubble)
+	parent.move_child(collectable_bubble, 0)

@@ -11,6 +11,7 @@ position = Vector2(231, 141)
 
 [node name="OxygenStock" parent="." instance=ExtResource("2_7rc0q")]
 position = Vector2(473, 594)
+initial_stock = 0.0
 
 [node name="Courant" parent="." instance=ExtResource("3_m2wnb")]
 position = Vector2(519, 178)
