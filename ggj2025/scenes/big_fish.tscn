@@ -42,6 +42,21 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_j5k8w"]
 radius = 25.1794
 
+[sub_resource type="Animation" id="Animation_73mno"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_vjmub"]
 resource_name = "ScaleUp"
 length = 5.0
@@ -58,31 +73,17 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(2, 2), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_73mno"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ax8r4"]
 _data = {
 "RESET": SubResource("Animation_73mno"),
 "ScaleUp": SubResource("Animation_vjmub")
 }
 
-[node name="BigFish" type="RigidBody2D"]
-collision_layer = 4
-gravity_scale = 0.0
+[node name="BigFish" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
 script = ExtResource("1_wlt4k")
+damage_amount = 1.0
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -91,14 +92,6 @@ animation = &"Idle"
 frame = 2
 frame_progress = 0.744288
 metadata/_edit_lock_ = true
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_j5k8w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -117,6 +110,5 @@ autostart = true
 wait_time = 4.0
 autostart = true
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="ScaleUpTimer" to="." method="_on_scale_up_timer_timeout"]
 [connection signal="timeout" from="ChangeDirectionTimer" to="." method="_on_change_direction_timer_timeout"]

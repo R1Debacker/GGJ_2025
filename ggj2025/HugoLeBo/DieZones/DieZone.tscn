@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlt4260a21c2g"]
+
+[ext_resource type="PackedScene" uid="uid://cushe2im7ydcb" path="res://scenes/bend_pine.tscn" id="2_7saym"]
+[ext_resource type="PackedScene" uid="uid://dcjrfeay866pw" path="res://scenes/player.tscn" id="3_sdohv"]
+
+[node name="DieZone" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("3_sdohv")]
+position = Vector2(345, 176)
+
+[node name="BendPine" parent="." instance=ExtResource("2_7saym")]
+position = Vector2(262, 116)
