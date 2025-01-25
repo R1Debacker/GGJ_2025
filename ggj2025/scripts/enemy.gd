@@ -1,9 +1,8 @@
 extends Node2D
 
 @export var damage_amount := 50.0
-@export var speed_factor := 1.0
 @export var distance_to_touch := 25.0
-var enemy_speed := 300.0
+@export var enemy_speed := 300.0
 var current_target : Node2D = null
 var origin_position := Vector2.ZERO
 var target_position := Vector2.ZERO
@@ -26,7 +25,7 @@ var state :=STATE.PATROL
 func _ready() -> void:
 	enemy_sprite.play('Idle')
 	origin_position=global_position
-	idle_movement.wait_time=1.0 * 1/speed_factor
+	idle_movement.wait_time=600.0/enemy_speed
 	idle_movement.start()
 
 func _on_body_entered(body: Node) -> void:
@@ -41,7 +40,6 @@ func _on_radar_area_body_entered(body: Node2D) -> void:
 
 		state=STATE.FOLLOW
 		current_target=body
-		enemy_speed=speed_factor*current_target.player_speed*0.7
 		following_time.start()
 
 		
@@ -55,7 +53,8 @@ func _follow(delta: float):
 	
 func _patrol_movement(delta: float):
 	
-	enemy_sprite.flip_h = direction_idle_movement.x<0
+	look_at(position+50.0*direction_idle_movement)
+	enemy_sprite.flip_v = direction_idle_movement.x<0
 	global_position+=direction_idle_movement*delta*enemy_speed
 	
 func _going_back(delta: float):
@@ -63,6 +62,9 @@ func _going_back(delta: float):
 	look_at(origin_position)
 	enemy_sprite.flip_v = origin_position.x<global_position.x
 	global_position=global_position.move_toward(origin_position,delta*enemy_speed)
+	if global_position-global_position.move_toward(origin_position,delta*enemy_speed)==Vector2.ZERO:
+	
+		state=STATE.PATROL
 	
 func _physics_process(delta: float) -> void:
 
