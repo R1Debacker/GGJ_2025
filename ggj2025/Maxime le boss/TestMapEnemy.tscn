@@ -15,8 +15,7 @@ metadata/_edit_lock_ = true
 
 [node name="Enemy" parent="." instance=ExtResource("2_dmwdw")]
 position = Vector2(1168, 381)
-damage_amount = 50.0
-distance_to_touch = 25.0
+speed_factor = 0.6
 
 [node name="Submarine" parent="." instance=ExtResource("3_wxspl")]
 position = Vector2(1882, 483)
