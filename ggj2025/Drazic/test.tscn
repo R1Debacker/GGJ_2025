@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvbh81n2hbdj0"]
+[gd_scene load_steps=4 format=3 uid="uid://dvbh81n2hbdj0"]
 
 [ext_resource type="PackedScene" uid="uid://dcjrfeay866pw" path="res://Drazic/player.tscn" id="1_ejm33"]
+[ext_resource type="PackedScene" uid="uid://bqbyujcfb1due" path="res://scenes/oxygen_stock.tscn" id="2_7rc0q"]
+[ext_resource type="PackedScene" uid="uid://bey8i8t7fmviv" path="res://HugoLeBo/Courant Scene/FastCourrant.tscn" id="3_m2wnb"]
 
 [node name="Test" type="Node2D"]
-position = Vector2(65, 33)
 
 [node name="Player" parent="." instance=ExtResource("1_ejm33")]
-position = Vector2(240, 176)
+position = Vector2(231, 141)
+
+[node name="OxygenStock" parent="." instance=ExtResource("2_7rc0q")]
+position = Vector2(473, 594)
+initial_stock = 0.0
+
+[node name="Courant" parent="." instance=ExtResource("3_m2wnb")]
+position = Vector2(519, 178)

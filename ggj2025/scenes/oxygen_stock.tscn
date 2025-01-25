@@ -1,65 +1,57 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqbyujcfb1due"]
-
-[ext_resource type="Script" path="res://scripts/oxygen_stock.gd" id="1_tx5h2"]
 [gd_scene load_steps=8 format=3 uid="uid://bqbyujcfb1due"]
 
+[ext_resource type="Texture2D" uid="uid://bxwncgpw6fst8" path="res://assets/sprites/OxygenStockStandardSpriteSheet.png" id="1_4i8vh"]
 [ext_resource type="Script" path="res://scripts/oxygen_stock.gd" id="1_tx5h2"]
-[ext_resource type="Texture2D" uid="uid://bxwncgpw6fst8" path="res://assets/sprites/OxygenStockStandardSpriteSheet.png" id="2_14xyo"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_th05f"]
-atlas = ExtResource("2_14xyo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qibg2"]
+atlas = ExtResource("1_4i8vh")
 region = Rect2(0, 3, 484, 281)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fkm62"]
-atlas = ExtResource("2_14xyo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmm7x"]
+atlas = ExtResource("1_4i8vh")
 region = Rect2(484, 3, 484, 281)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vvxtr"]
-atlas = ExtResource("2_14xyo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjrax"]
+atlas = ExtResource("1_4i8vh")
 region = Rect2(0, 284, 484, 281)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kic44"]
-atlas = ExtResource("2_14xyo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck25v"]
+atlas = ExtResource("1_4i8vh")
 region = Rect2(484, 284, 484, 281)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_65jl5"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_d7lyr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_th05f")
+"texture": SubResource("AtlasTexture_qibg2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fkm62")
+"texture": SubResource("AtlasTexture_tmm7x")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vvxtr")
+"texture": SubResource("AtlasTexture_hjrax")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kic44")
+"texture": SubResource("AtlasTexture_ck25v")
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 3.0
+"speed": 2.0
 }]
 
 [node name="OxygenStock" type="Node2D"]
 script = ExtResource("1_tx5h2")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -98.715)
-scale = Vector2(0.7, 0.7)
-sprite_frames = SubResource("SpriteFrames_65jl5")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -140.7)
+sprite_frames = SubResource("SpriteFrames_d7lyr")
 animation = &"Idle"
-frame = 1
-frame_progress = 0.561092
-metadata/_edit_lock_ = true
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 4.0
 autostart = true
 
-[node name="BubblesSpawnPosition" type="Node2D" parent="."]
-position = Vector2(0, -112.53)
-metadata/_edit_lock_ = true
+[node name="SpawnPosition" type="Node2D" parent="."]
+position = Vector2(0, -114.95)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

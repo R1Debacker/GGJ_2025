@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed : float = 10
+@export var speed : float = 600.0
 
 var players = []
 
@@ -20,5 +20,4 @@ func _on_body_exited(body: Node2D) -> void:
 			var idx = players.find(body)
 			if idx != -1:
 				players.remove_at(idx)
-	print(players)
 	pass # Replace with function body.

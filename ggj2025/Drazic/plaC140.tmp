@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://dcjrfeay866pw"]
+
+[ext_resource type="Texture2D" uid="uid://rkdi136brshn" path="res://assets/sprites/bulle un peu stylé.png" id="1_rwfm5"]
+[ext_resource type="Script" path="res://Drazic/player.gd" id="1_yl08c"]
+[ext_resource type="Texture2D" uid="uid://bnwfms3usbud8" path="res://assets/sprites/shrimp_1.png" id="3_bgd2j"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_42hd7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d82a7"]
+atlas = ExtResource("1_rwfm5")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_crgjt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d82a7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cy70y"]
+radius = 51.4781
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejvhh"]
+size = Vector2(155, 112)
+
+[node name="Player" type="Node2D"]
+
+[node name="Bubble" type="RigidBody2D" parent="."]
+position = Vector2(0, 100)
+physics_material_override = SubResource("PhysicsMaterial_42hd7")
+gravity_scale = 0.0
+can_sleep = false
+linear_damp = 10.0
+
+[node name="BubbleSprite" type="AnimatedSprite2D" parent="Bubble"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_crgjt")
+offset = Vector2(0, -18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bubble"]
+shape = SubResource("CircleShape2D_cy70y")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+motion_mode = 1
+script = ExtResource("1_yl08c")
+player_speed = null
+dash_speed = null
+drag_resistance = null
+bubble_air_volume = null
+bubble_scale = null
+dash_delay = null
+
+[node name="PlayerSprite" type="Sprite2D" parent="Player"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("3_bgd2j")
+
+[node name="PlayerCollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_ejvhh")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+node_a = NodePath("../Player")
+node_b = NodePath("../Bubble")
+bias = 0.9
+stiffness = 64.0
+damping = 0.01
