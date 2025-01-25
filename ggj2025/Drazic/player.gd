@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @onready var bubble: RigidBody2D = $"../Bubble"
 @onready var damped_spring_joint_2d: DampedSpringJoint2D = $"../DampedSpringJoint2D"
