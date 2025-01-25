@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bxwncgpw6fst8" path="res://assets/sprites/OxygenStockStandardSpriteSheet.png" id="1_4i8vh"]
 [ext_resource type="Script" path="res://scripts/oxygen_stock.gd" id="1_tx5h2"]
+[ext_resource type="PackedScene" uid="uid://dkldwn0auf1s7" path="res://HugoLeBo/UI_Game/JaugeO2_TextureBar.tscn" id="3_dox3i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qibg2"]
 atlas = ExtResource("1_4i8vh")
@@ -53,5 +54,16 @@ autostart = true
 
 [node name="SpawnPosition" type="Node2D" parent="."]
 position = Vector2(0, -114.95)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TextureProgressBar" parent="." instance=ExtResource("3_dox3i")]
+offset_left = -166.0
+offset_top = 0.0
+offset_right = -134.0
+offset_bottom = 8.0
+rotation = -1.5708
+scale = Vector2(5, 5)
+script = null
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
