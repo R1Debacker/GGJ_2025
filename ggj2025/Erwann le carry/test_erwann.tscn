@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjtf3rftw3r2f"]
+[gd_scene load_steps=7 format=3 uid="uid://cjtf3rftw3r2f"]
 
 [ext_resource type="PackedScene" path="res://scenes/map.tscn" id="1_vc81k"]
+[ext_resource type="PackedScene" uid="uid://bpj5rq6vpryhv" path="res://scenes/enemy.tscn" id="2_7a8o1"]
 [ext_resource type="PackedScene" uid="uid://bqbyujcfb1due" path="res://scenes/oxygen_stock.tscn" id="2_c1llh"]
 [ext_resource type="PackedScene" uid="uid://dyn8uwh07g3p8" path="res://scenes/submarine.tscn" id="4_h3427"]
 [ext_resource type="PackedScene" uid="uid://dcjrfeay866pw" path="res://Drazic/player.tscn" id="5_ssu42"]
@@ -10,6 +11,9 @@
 
 [node name="Map" parent="." instance=ExtResource("1_vc81k")]
 metadata/_edit_lock_ = true
+
+[node name="Enemy" parent="." instance=ExtResource("2_7a8o1")]
+position = Vector2(1042, 419)
 
 [node name="Submarine" parent="." instance=ExtResource("4_h3427")]
 position = Vector2(1802, 533)
