@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfhyjbm60xb5h"]
+
+[ext_resource type="Script" path="res://autoloads/Game.gd" id="1_qcbwj"]
+[ext_resource type="AudioStream" uid="uid://ctx0djew58i1k" path="res://HugoLeBo/UI_Menus/bubbles_A#_major.wav" id="2_bl4pm"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_qcbwj")
+
+[node name="Menu_Button_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_bl4pm")

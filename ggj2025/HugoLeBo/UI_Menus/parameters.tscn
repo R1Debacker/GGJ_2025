@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://bst61aw4bg8w3"]
+
+[ext_resource type="Script" path="res://HugoLeBo/UI_Menus/parameters.gd" id="1_fr5m5"]
+[ext_resource type="Texture2D" uid="uid://x7538hbs0j42" path="res://HugoLeBo/UI_Menus/main_menu.png" id="2_5dabr"]
+[ext_resource type="FontFile" uid="uid://b8i5ovcrke3e" path="res://HugoLeBo/UI_Menus/PlayfulTime-BLBB8.ttf" id="3_qrwx5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8yhja"]
+texture = ExtResource("2_5dabr")
+modulate_color = Color(0.572988, 0.572988, 0.572988, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfhp2"]
+bg_color = Color(0.207333, 0.550328, 0.80987, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7c2ax"]
+bg_color = Color(0.100394, 0.361504, 0.551609, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8w74q"]
+bg_color = Color(0.291206, 0.627957, 0.893409, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 2
+
+[node name="parameters" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fr5m5")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -321.0
+offset_top = -181.0
+offset_right = 319.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_8yhja")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -18.0
+offset_right = 63.5
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_qrwx5")
+theme_override_font_sizes/font_size = 28
+text = "parameters"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 46.0
+offset_right = 64.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/hover = SubResource("StyleBoxFlat_sfhp2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7c2ax")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8w74q")
+text = "BACK TO MENU"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
