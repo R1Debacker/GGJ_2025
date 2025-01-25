@@ -5,6 +5,7 @@ const COLLECTABLE_BUBBLE = preload("res://scenes/collectable_bubble.tscn")
 @onready var bubbles_spawn_position: Node2D = $BubblesSpawnPosition
 
 func _ready() -> void:
+	$AnimatedSprite2D.play("Idle")
 	initial_stock = 1000.0
 	_spawn_bubble(bubbles_spawn_position.position)
 

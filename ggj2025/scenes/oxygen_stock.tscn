@@ -1,20 +1,58 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqbyujcfb1due"]
+[gd_scene load_steps=8 format=3 uid="uid://b3em41xciomo0"]
 
+[ext_resource type="Texture2D" uid="uid://bxwncgpw6fst8" path="res://assets/sprites/OxygenStockStandardSpriteSheet.png" id="1_4i8vh"]
 [ext_resource type="Script" path="res://scripts/oxygen_stock.gd" id="1_tx5h2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qibg2"]
+atlas = ExtResource("1_4i8vh")
+region = Rect2(0, 3, 484, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmm7x"]
+atlas = ExtResource("1_4i8vh")
+region = Rect2(484, 3, 484, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjrax"]
+atlas = ExtResource("1_4i8vh")
+region = Rect2(0, 284, 484, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck25v"]
+atlas = ExtResource("1_4i8vh")
+region = Rect2(484, 284, 484, 281)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d7lyr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qibg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmm7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjrax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ck25v")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}]
 
 [node name="OxygenStock" type="Node2D"]
 script = ExtResource("1_tx5h2")
 initial_stock = null
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-metadata/_edit_lock_ = true
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -140.7)
+sprite_frames = SubResource("SpriteFrames_d7lyr")
+animation = &"Idle"
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 4.0
 autostart = true
 
-[node name="BubblesSpawnPosition" type="Node2D" parent="."]
-position = Vector2(0, -66.96)
-metadata/_edit_lock_ = true
+[node name="SpawnPosition" type="Node2D" parent="."]
+position = Vector2(0, -114.95)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

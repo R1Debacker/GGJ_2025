@@ -4,31 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://ld037lban86a" path="res://assets/sprites/submarine.png" id="2_f01e0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ehygj"]
-radius = 12.0
-
-[sub_resource type="Animation" id="Animation_sdvu8"]
-resource_name = "vertical_animation"
-length = 20.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(5, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 20), Vector2(0, -20)]
-}
+radius = 119.08
 
 [sub_resource type="Animation" id="Animation_sby0r"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -38,6 +21,23 @@ tracks/0/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_sdvu8"]
+resource_name = "vertical_animation"
+length = 20.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(5, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 100), Vector2(0, -100)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oo8lo"]
 _data = {
 "RESET": SubResource("Animation_sby0r"),
@@ -45,16 +45,16 @@ _data = {
 }
 
 [node name="Submarine" type="Node2D"]
-rotation = 0.774926
 script = ExtResource("1_uexf5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.00888889, 0.00888889)
+scale = Vector2(0.07, 0.07)
 texture = ExtResource("2_f01e0")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+scale = Vector2(14.2857, 14.2857)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
 shape = SubResource("CircleShape2D_ehygj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -62,5 +62,5 @@ libraries = {
 "": SubResource("AnimationLibrary_oo8lo")
 }
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_exited"]

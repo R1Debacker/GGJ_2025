@@ -5,6 +5,9 @@ extends Node2D
 var current_oxygen_level := 0.0
 var current_shrimp : CharacterBody2D = null
 
+func _ready() -> void:
+	$AnimationPlayer.play("vertical_animation")
+
 func _process(delta: float) -> void:
 	if current_shrimp != null:
 		current_oxygen_level += filling_speed * delta
@@ -27,7 +30,8 @@ func _victory():
 	pass
 
 func _find_shrimp_in_area():
-	for body in $Area2D.get_overlapping_bodies():
-		if body is CharacterBody2D:
-			current_shrimp = body
-			return
+	if $Sprite2D/Area2D.has_overlapping_bodies():
+		for body in $Sprite2D/Area2D.get_overlapping_bodies():
+			if body is CharacterBody2D:
+				current_shrimp = body
+				return
