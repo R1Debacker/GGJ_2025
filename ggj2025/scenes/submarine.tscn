@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyn8uwh07g3p8"]
+[gd_scene load_steps=8 format=3 uid="uid://dyn8uwh07g3p8"]
 
 [ext_resource type="Script" path="res://scripts/submarine.gd" id="1_uexf5"]
 [ext_resource type="Texture2D" uid="uid://ld037lban86a" path="res://assets/sprites/submarine.png" id="2_f01e0"]
+[ext_resource type="PackedScene" uid="uid://dkldwn0auf1s7" path="res://HugoLeBo/UI_Game/JaugeO2_TextureBar.tscn" id="3_sswjd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ehygj"]
 radius = 119.08
@@ -61,6 +62,16 @@ shape = SubResource("CircleShape2D_ehygj")
 libraries = {
 "": SubResource("AnimationLibrary_oo8lo")
 }
+
+[node name="TextureProgressBar" parent="." node_paths=PackedStringArray("Submarine") instance=ExtResource("3_sswjd")]
+offset_left = -34.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = 4.0
+Submarine = NodePath("../Sprite2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_exited"]
