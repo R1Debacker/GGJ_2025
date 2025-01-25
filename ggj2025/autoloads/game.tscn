@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://autoloads/Game.gd" id="1_06ibk"]
 [ext_resource type="AudioStream" uid="uid://ctx0djew58i1k" path="res://HugoLeBo/UI_Menus/bubbles_A#_major.wav" id="2_bl4pm"]
 [ext_resource type="AudioStream" uid="uid://dl0xmt1gltwk5" path="res://assets/sprites/SFX/Borne 49.3 a la con.mp3" id="3_ryfkl"]
-[ext_resource type="AudioStream" uid="uid://cn1yhmyohlx24" path="res://assets/sprites/SFX/bubble-pops.mp3" id="4_acai8"]
+[ext_resource type="AudioStream" uid="uid://860qp5wfgd7t" path="res://assets/sprites/SFX/Bubble Pop 1.mp3" id="4_aspm5"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_06ibk")
@@ -20,4 +20,4 @@ bus = &"Ellie"
 parameters/looping = true
 
 [node name="BubblePop" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_acai8")
+stream = ExtResource("4_aspm5")
