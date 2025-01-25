@@ -4,7 +4,7 @@ extends Node2D
 const COLLECTABLE_BUBBLE = preload("res://scenes/collectable_bubble.tscn")
 
 func _ready() -> void:
-	$Sprite2D.play("Idle")
+	$AnimatedSprite2D.play("Idle")
 	initial_stock = 1000.0
 	_spawn_bubble()
 	
@@ -17,7 +17,7 @@ func _on_spawn_timer_timeout() -> void:
 func _spawn_bubble():
 	if initial_stock > 0:
 		var collectable_bubble = COLLECTABLE_BUBBLE.instantiate()
-		collectable_bubble.position = $BubblesSpawnPosition.position
+		collectable_bubble.position = $SpawnPosition.position
 		var bubble_size = randf_range(1.0, 3.0)
 		collectable_bubble._set_scale(bubble_size)
 		initial_stock -= bubble_size * 10.0
