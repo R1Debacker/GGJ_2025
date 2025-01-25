@@ -2,30 +2,36 @@ extends CharacterBody2D
 class_name Player
 
 
-@onready var bubble: Bubble = $"../Bubble/Bubble"
+@onready var bubble: Bubble = null
 @onready var damped_spring_joint_2d: DampedSpringJoint2D = $"../DampedSpringJoint2D"
 @onready var player_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision: CollisionPolygon2D = $CollisionPolygon2D
+@onready var bubble_parent: RigidBody2D = $"../Bubble"
 
 @export var player_speed = 500.0
 @export var dash_speed = 30000.0
 @export var drag_resistance = 0.98
 @export var dash_delay_ms : float = 1000.0
+@export var device_idx : int = 0
 var timestamp_last_use_dash : float = 0
 
 var default_length : float = 0
 var dir : Vector2 = Vector2(0, 0)
 var env_velocity : Vector2 = Vector2(0, 0)
-var has_bubble : bool = true
-var device_idx : int = 0
 var is_dash_pressed = true
 
+var has_bubble : bool :
+	get:
+		return bubble != null
+
 func _ready() -> void:
-	default_length = (self.global_position - bubble.global_position).length() / bubble.bubble_scale
+	if has_bubble:
+		default_length = (self.global_position - bubble.global_position).length() / bubble.bubble_scale
 
 func _process(delta: float) -> void:
-	damped_spring_joint_2d.length = default_length * bubble.bubble_scale * 0.8
-	damped_spring_joint_2d.rest_length = default_length * bubble.bubble_scale * 0.8
+	if has_bubble:
+		damped_spring_joint_2d.length = default_length * bubble.bubble_scale * 0.8
+		damped_spring_joint_2d.rest_length = default_length * bubble.bubble_scale * 0.8
 	
 	var target = self.global_position - self.velocity.normalized()
 	self.look_at(target)
@@ -79,5 +85,13 @@ func _physics_process(delta: float) -> void:
 	env_velocity = Vector2(0,0)
 	move_and_slide()
 
-func collect(air_volume: float):
-	bubble.add_volume(air_volume)
+func collect(hit_bubble: Bubble):
+	if has_bubble:
+		self.bubble.add_volume(hit_bubble.air_volume)
+		hit_bubble._burst_bubble()
+	else:
+		hit_bubble.moving_active = false
+		hit_bubble.get_parent().remove_child(hit_bubble)
+		bubble_parent.add_child(hit_bubble)
+		hit_bubble.position = Vector2(0,0)
+		self.bubble = hit_bubble
