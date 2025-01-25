@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:ggj2025/scenes/bubF6DE.tmp
 [gd_scene load_steps=6 format=3 uid="uid://c3knjy71udjcr"]
+========
+[gd_scene load_steps=6 format=3 uid="uid://wh7vu02y7riu"]
+>>>>>>>> f21a498 (temp):ggj2025/scenes/collectable_bubble.tscn
 
 [ext_resource type="Script" path="res://Drazic/bubble.gd" id="1_wpub6"]
 [ext_resource type="Texture2D" uid="uid://rkdi136brshn" path="res://assets/sprites/bulle un peu stylé.png" id="2_c8pr8"]

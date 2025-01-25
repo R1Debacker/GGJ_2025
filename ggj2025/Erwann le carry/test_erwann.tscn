@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjtf3rftw3r2f"]
+[gd_scene load_steps=8 format=3 uid="uid://cjtf3rftw3r2f"]
 
-[ext_resource type="PackedScene" uid="uid://bfgc4ieq6gxuj" path="res://scenes/map.tscn" id="1_vc81k"]
+[ext_resource type="PackedScene" uid="uid://y3degk013o8y" path="res://scenes/map.tscn" id="1_vc81k"]
 [ext_resource type="PackedScene" uid="uid://b3em41xciomo0" path="res://scenes/oxygen_stock.tscn" id="2_c1llh"]
-[ext_resource type="PackedScene" path="res://Drazic/player.tscn" id="4_6hwi3"]
+[ext_resource type="PackedScene" uid="uid://dcjrfeay866pw" path="res://scenes/player.tscn" id="4_6hwi3"]
 [ext_resource type="PackedScene" uid="uid://dyn8uwh07g3p8" path="res://scenes/submarine.tscn" id="4_h3427"]
 [ext_resource type="PackedScene" uid="uid://bjinpqjoklw6o" path="res://scenes/water_shader.tscn" id="5_w7s64"]
-[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="6_kgl1f"]
+[ext_resource type="PackedScene" uid="uid://bpj5rq6vpryhv" path="res://scenes/enemy.tscn" id="6_kgl1f"]
+[ext_resource type="PackedScene" path="res://scenes/big_fish.tscn" id="7_rye87"]
 
 [node name="TestErwann" type="Node2D"]
 
@@ -19,10 +20,13 @@ position = Vector2(1711, 431)
 position = Vector2(247, 784)
 
 [node name="Player" parent="." instance=ExtResource("4_6hwi3")]
-position = Vector2(187, 438)
+position = Vector2(606, 682)
 
 [node name="Sprite2D" parent="." instance=ExtResource("5_w7s64")]
 metadata/_edit_lock_ = true
 
 [node name="Enemy" parent="." instance=ExtResource("6_kgl1f")]
-position = Vector2(956, 360)
+position = Vector2(518, 200)
+
+[node name="BigFish" parent="." instance=ExtResource("7_rye87")]
+position = Vector2(1030, 366)

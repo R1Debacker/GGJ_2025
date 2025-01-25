@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var speed : float = 600.0
+@onready var timer: Timer = $Timer
 
 var players = []
 
@@ -20,4 +21,9 @@ func _on_body_exited(body: Node2D) -> void:
 			var idx = players.find(body)
 			if idx != -1:
 				players.remove_at(idx)
+	pass # Replace with function body.
+
+
+func _on_timer_timeout() -> void:
+	rotation=rotation-PI
 	pass # Replace with function body.

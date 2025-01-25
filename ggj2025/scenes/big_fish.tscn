@@ -1,0 +1,122 @@
+[gd_scene load_steps=12 format=3 uid="uid://4qiggnmy0p87"]
+
+[ext_resource type="Script" path="res://scripts/big_fish.gd" id="1_wlt4k"]
+[ext_resource type="Texture2D" uid="uid://bnb42u2fgk0dx" path="res://assets/sprites/underwater-diving-files/PNG/enemies/fish-big.png" id="2_tfjl6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqkgf"]
+atlas = ExtResource("2_tfjl6")
+region = Rect2(0, 0, 54, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohfxe"]
+atlas = ExtResource("2_tfjl6")
+region = Rect2(54, 0, 54, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hskue"]
+atlas = ExtResource("2_tfjl6")
+region = Rect2(108, 0, 54, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ylm1"]
+atlas = ExtResource("2_tfjl6")
+region = Rect2(162, 0, 54, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wrvtf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqkgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohfxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hskue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ylm1")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j5k8w"]
+radius = 25.1794
+
+[sub_resource type="Animation" id="Animation_vjmub"]
+resource_name = "ScaleUp"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_73mno"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ax8r4"]
+_data = {
+"RESET": SubResource("Animation_73mno"),
+"ScaleUp": SubResource("Animation_vjmub")
+}
+
+[node name="BigFish" type="RigidBody2D"]
+collision_layer = 4
+gravity_scale = 0.0
+script = ExtResource("1_wlt4k")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wrvtf")
+animation = &"Idle"
+frame = 2
+frame_progress = 0.744288
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_j5k8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_j5k8w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ax8r4")
+}
+
+[node name="ScaleUpTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[node name="ChangeDirectionTimer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="ScaleUpTimer" to="." method="_on_scale_up_timer_timeout"]
+[connection signal="timeout" from="ChangeDirectionTimer" to="." method="_on_change_direction_timer_timeout"]
