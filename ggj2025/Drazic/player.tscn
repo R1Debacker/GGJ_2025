@@ -1,28 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dcjrfeay866pw"]
+[gd_scene load_steps=11 format=3 uid="uid://dcjrfeay866pw"]
 
-[ext_resource type="Texture2D" uid="uid://rkdi136brshn" path="res://assets/sprites/bulle un peu stylé.png" id="1_rwfm5"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_yl08c"]
+[ext_resource type="PackedScene" uid="uid://c3knjy71udjcr" path="res://scenes/bubble.tscn" id="1_e2jyr"]
+[ext_resource type="Script" path="res://Drazic/player.gd" id="1_yl08c"]
 [ext_resource type="Texture2D" uid="uid://bkdaqjtk816mx" path="res://assets/sprites/shrimp-spritesheet.png" id="3_d37ak"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_42hd7"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d82a7"]
-atlas = ExtResource("1_rwfm5")
-region = Rect2(0, 0, 640, 640)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_crgjt"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d82a7")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_cy70y"]
-radius = 23.1948
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ldffj"]
 atlas = ExtResource("3_d37ak")
@@ -81,21 +61,10 @@ animations = [{
 
 [node name="Player" type="Node2D"]
 
-[node name="Bubble" type="RigidBody2D" parent="."]
-position = Vector2(0, 50)
-collision_layer = 2
-physics_material_override = SubResource("PhysicsMaterial_42hd7")
-gravity_scale = 0.0
+[node name="Bubble" parent="." instance=ExtResource("1_e2jyr")]
+position = Vector2(0, 27)
 can_sleep = false
-linear_damp = 10.0
-
-[node name="BubbleSprite" type="AnimatedSprite2D" parent="Bubble"]
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_crgjt")
-offset = Vector2(0, -18)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bubble"]
-shape = SubResource("CircleShape2D_cy70y")
+linear_damp = 5.0
 
 [node name="Player" type="CharacterBody2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -112,7 +81,7 @@ position = Vector2(18, 2)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_tjmg8")
 animation = &"swimming"
-frame_progress = 0.158274
+frame_progress = 0.901574
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
 node_a = NodePath("../Player")

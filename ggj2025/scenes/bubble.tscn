@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3knjy71udjcr"]
+
+[ext_resource type="Script" path="res://Drazic/bubble.gd" id="1_wpub6"]
+[ext_resource type="Texture2D" uid="uid://rkdi136brshn" path="res://assets/sprites/bulle un peu stylé.png" id="2_c8pr8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ik8a"]
+atlas = ExtResource("2_c8pr8")
+region = Rect2(0, 50, 640, 623)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3pqbv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ik8a")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q87wy"]
+radius = 10.0499
+
+[node name="Bubble" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_wpub6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 0.915)
+scale = Vector2(0.0417336, 0.0417335)
+sprite_frames = SubResource("SpriteFrames_3pqbv")
+animation = &"Idle"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q87wy")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
