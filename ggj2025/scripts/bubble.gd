@@ -30,7 +30,7 @@ func set_volume(new_vol : float):
 	self.air_volume = new_vol
 
 func add_volume(added_vol : float):
-	self.bubble_scale = sqrt((added_vol + air_volume)/PI)
+	self.bubble_scale = sqrt((max(added_vol + air_volume, 0))/PI)
 	self.set_volume((self.bubble_scale**2)*PI)
 
 func split():
