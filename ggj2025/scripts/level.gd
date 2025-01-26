@@ -17,10 +17,15 @@ func init_level():
 	rng.shuffle()
 	var sub_dir = (end_submarine_spawn.global_position - start_submarine_spawn.global_position).normalized()
 	var sub_step = (end_submarine_spawn.global_position - start_submarine_spawn.global_position).length() / Game.nb_players
-	var submarine_position = start_submarine_spawn.global_position
+	var j := 0
 	for i in rng:
 		var player_color = Game.players_color[i]
 		var player_idx = Game.players_idx[i]
+		var t = 0
+		if Game.nb_players >= 2:
+			t = (j/(Game.nb_players-1))
+		
+		var submarine_position = (1-t)*start_submarine_spawn.global_position + t*end_submarine_spawn.global_position
 		
 		## instanciate player
 		var player = Game.PLAYER.instantiate()
@@ -30,13 +35,19 @@ func init_level():
 		player.player.color = player_color
 		player.player.active = false
 		
+		## instanciate submarine
 		var submarine: Submarine  = Game.SUBMARINE.instantiate()
 		submarine_container.add_child(submarine)
-		submarine.animation_player.pause()
+		submarine.animation_player.stop()
+		submarine.disable = true
 		submarine.global_position = submarine_position
 		submarine.get_node("Localposition/VictoryPosition/Sprite2D").self_modulate = player.player.color
 		submarine.player_index = player_idx
-		submarine_position += sub_dir * sub_step
+		submarine.start_position = start_submarine_spawn.global_position
+		submarine.end_position = end_submarine_spawn.global_position
+		submarine.t = t
+		
+		j+= 1
 	
 	self.timer.start()
 	Game.beep.play()
@@ -47,7 +58,7 @@ func _on_timer_timeout() -> void:
 	if wait_time == 0:
 		self.label.visible = false
 		for submarine in submarine_container.get_children():
-			submarine.animation_player.play()
+			submarine.disable = false
 		for player in players_container.get_children():
 			player.player.active = true
 		self.timer.stop()

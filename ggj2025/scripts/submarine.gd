@@ -11,10 +11,39 @@ var current_oxygen_level := 0.0
 var current_shrimp : CharacterBody2D = null
 var victory := false
 
+var start_position : Vector2
+var end_position : Vector2
+var t : float = 0
+var use_lerp : bool :
+	get:
+		return start_position != null and end_position != null
+var direction = 1
+@export var speed : float = 0.04
+var disable := false
+var r = randf_range(0.9,1.1)
+
 func _ready() -> void:
-	$AnimationPlayer.play("vertical_animation")
+	if use_lerp:
+		animation_player.play("vertical_animation")
+	else:
+		animation_player.stop()
 	
 func _process(delta: float) -> void:
+	if use_lerp and not disable:
+		# Update the interpolation factor
+		t += direction * speed * delta * r
+
+		# Reverse direction if limits are reached
+		if t >= 1.0:
+			t = 1.0
+			direction = -1.0
+		elif t <= 0.0:
+			t = 0.0
+			direction = 1.0
+
+		# Interpolate between the positions
+		position = lerp(start_position, end_position,  t * t * (3.0 - 2.0 * t))
+	
 	if current_shrimp != null && current_shrimp.has_bubble && current_shrimp.bubble.air_volume > 0.0:
 		if audio_stream_player_2d.is_playing() == false:
 				audio_stream_player_2d.play()
