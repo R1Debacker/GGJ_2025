@@ -15,7 +15,6 @@ func _ready() -> void:
 func init_level():
 	var rng = range(Game.nb_players)
 	rng.shuffle()
-	var j = 0
 	var sub_dir = (end_submarine_spawn.global_position - start_submarine_spawn.global_position).normalized()
 	var sub_step = (end_submarine_spawn.global_position - start_submarine_spawn.global_position).length() / Game.nb_players
 	var submarine_position = start_submarine_spawn.global_position
@@ -35,10 +34,9 @@ func init_level():
 		submarine_container.add_child(submarine)
 		submarine.animation_player.pause()
 		submarine.global_position = submarine_position
-		submarine.modulate = player.player.color
-		
+		submarine.get_node("Localposition/VictoryPosition/Sprite2D").self_modulate = player.player.color
+		submarine.player_index = player_idx
 		submarine_position += sub_dir * sub_step
-		j += 1
 	
 	self.timer.start()
 

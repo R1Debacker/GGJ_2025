@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyn8uwh07g3p8"]
+[gd_scene load_steps=10 format=3 uid="uid://dyn8uwh07g3p8"]
 
 [ext_resource type="Script" path="res://scripts/submarine.gd" id="1_uexf5"]
 [ext_resource type="Texture2D" uid="uid://ld037lban86a" path="res://assets/sprites/submarine.png" id="2_f01e0"]
@@ -13,7 +13,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("Localposition:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,12 +25,12 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_sdvu8"]
 resource_name = "vertical_animation"
-length = 20.0
-loop_mode = 1
+length = 10.0
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("Localposition:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -40,10 +40,39 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, 200)]
 }
 
+[sub_resource type="Animation" id="Animation_3soml"]
+resource_name = "victory"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Localposition/VictoryPosition:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(500, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Localposition/VictoryPosition:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, -0.122173, 0.174533, -0.174533, 0.174533, -0.174533, 0.174533, -0.174533, 0.174533, -0.174533, 0.0, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oo8lo"]
 _data = {
 "RESET": SubResource("Animation_sby0r"),
-"vertical_animation": SubResource("Animation_sdvu8")
+"vertical_animation": SubResource("Animation_sdvu8"),
+"victory": SubResource("Animation_3soml")
 }
 
 [node name="Submarine" type="Node2D"]
@@ -51,36 +80,40 @@ modulate = Color(0.975542, 0.989181, 0.901458, 1)
 scale = Vector2(2, 2)
 script = ExtResource("1_uexf5")
 filling_speed = 8.0
-target_oxygen_level = 100.0
+target_oxygen_level = 10.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Localposition" type="Node2D" parent="."]
+
+[node name="VictoryPosition" type="Node2D" parent="Localposition"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Localposition/VictoryPosition"]
 scale = Vector2(0.07, 0.07)
 texture = ExtResource("2_f01e0")
 
-[node name="Area2D" type="Area2D" parent="Sprite2D"]
+[node name="Area2D" type="Area2D" parent="Localposition/VictoryPosition/Sprite2D"]
 scale = Vector2(14.2857, 14.2857)
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Localposition/VictoryPosition/Sprite2D/Area2D"]
 shape = SubResource("CircleShape2D_ehygj")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_oo8lo")
-}
-
-[node name="TextureProgressBar" parent="." node_paths=PackedStringArray("Submarine") instance=ExtResource("3_sswjd")]
+[node name="TextureProgressBar" parent="Localposition/VictoryPosition" instance=ExtResource("3_sswjd")]
 use_parent_material = false
 offset_left = -34.0
 offset_top = -4.0
 offset_right = -2.0
 offset_bottom = 4.0
 value = 0.0
-texture_progress = null
-Submarine = NodePath("../Sprite2D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oo8lo")
+}
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_a8olk")
 
-[connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Localposition/VictoryPosition/Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Localposition/VictoryPosition/Sprite2D/Area2D" to="." method="_on_area_2d_body_exited"]
+
+[editable path="Localposition/VictoryPosition/TextureProgressBar"]

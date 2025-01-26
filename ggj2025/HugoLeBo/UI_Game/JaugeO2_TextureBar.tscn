@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkldwn0auf1s7"]
+[gd_scene load_steps=8 format=3 uid="uid://dkldwn0auf1s7"]
 
 [ext_resource type="Texture2D" uid="uid://ci6g6rst8o8k0" path="res://HugoLeBo/UI_Game/progress bar least rounded over.png" id="1_8ilub"]
 [ext_resource type="Texture2D" uid="uid://bpp4w6stsusq" path="res://HugoLeBo/UI_Game/progress bar least rounded progress green.png" id="2_xtyqk"]
 [ext_resource type="Script" path="res://HugoLeBo/UI_Game/O2progress_bar.gd" id="3_2touh"]
+
+[sub_resource type="Gradient" id="Gradient_klduo"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.870737, 0.515942, 1, 0, 0.97857, 0, 1)
 
 [sub_resource type="Animation" id="Animation_h4tna"]
 length = 0.001
@@ -43,6 +47,7 @@ _data = {
 }
 
 [node name="TextureProgressBar" type="TextureProgressBar"]
+texture_filter = 1
 use_parent_material = true
 offset_left = 156.0
 offset_top = -64.0
@@ -54,8 +59,10 @@ value = 0.5
 texture_under = ExtResource("1_8ilub")
 texture_progress = ExtResource("2_xtyqk")
 script = ExtResource("3_2touh")
+gradient = SubResource("Gradient_klduo")
 
 [node name="Label" type="Label" parent="."]
+show_behind_parent = true
 layout_mode = 0
 offset_left = 12.0
 offset_top = 1.0
