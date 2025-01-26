@@ -29,15 +29,6 @@ func _ready() -> void:
 	idle_movement.start()
 
 
-
-func _on_radar_area_body_entered(body: Node2D) -> void:
-
-	if body.get_child(0) is Bubble and state!=STATE.FOLLOW :
-
-		state=STATE.FOLLOW
-		current_target=body.get_child(0)
-		following_time.start()
-
 		
 func _follow(delta: float):
 	
@@ -77,7 +68,10 @@ func _physics_process(delta: float) -> void:
 
 	match(state):
 		STATE.FOLLOW:
-			_follow(delta)
+			if current_target != null:
+				_follow(delta)
+			else:
+				state = STATE.GOINGBACK
 		STATE.GOINGBACK:
 			_going_back(delta)
 		STATE.PATROL:
@@ -101,3 +95,10 @@ func _on_going_back_timer_timeout() -> void:
 	
 	origin_position=global_position
 	state=STATE.PATROL
+
+
+func _on_radar_area_area_entered(area: Area2D) -> void:
+	if area is Bubble and !area.moving_active and state!=STATE.FOLLOW :
+		state=STATE.FOLLOW
+		current_target = area
+		following_time.start()

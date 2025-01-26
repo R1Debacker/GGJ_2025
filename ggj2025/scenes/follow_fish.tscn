@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bpj5rq6vpryhv"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_ugw0d"]
+[ext_resource type="Script" path="res://scripts/follow_fish.gd" id="1_ugw0d"]
 [ext_resource type="Texture2D" uid="uid://byoyjmrflddx1" path="res://assets/sprites/underwater-diving-files/PNG/enemies/fish.png" id="2_iih3s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hc2q5"]
@@ -46,7 +46,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_txjhs"]
 radius = 343.111
 
-[node name="Enemy" type="RigidBody2D"]
+[node name="FollowFish" type="RigidBody2D"]
 collision_layer = 4
 gravity_scale = 0.0
 script = ExtResource("1_ugw0d")
@@ -87,7 +87,7 @@ wait_time = 4.0
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_entered" from="RadarArea" to="." method="_on_radar_area_body_entered"]
+[connection signal="area_entered" from="RadarArea" to="." method="_on_radar_area_area_entered"]
 [connection signal="timeout" from="FollowingTime" to="." method="_on_following_time_timeout"]
 [connection signal="timeout" from="IdleMovement" to="." method="_on_idle_movement_timeout"]
 [connection signal="timeout" from="GoingBackTimer" to="." method="_on_going_back_timer_timeout"]

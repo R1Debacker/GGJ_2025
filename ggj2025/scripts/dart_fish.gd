@@ -26,16 +26,7 @@ func _ready() -> void:
 	patrol_timer.wait_time= 200.0/enemy_speed
 	patrol_timer.start()
 
-func _on_radar_area_2d_body_entered(body: Node2D) -> void:
-
-	if body.get_child(0) is Bubble and state==STATE.PATROL :
-
-		state=STATE.PREPARE
-		current_target=body.get_child(0)
-		time_before_charge.start()
-	
 func _prepare(delta: float):
-
 	look_at(current_target.global_position)
 	dart_fish_sprite.flip_v = current_target.global_position.x<global_position.x
 	
@@ -49,17 +40,7 @@ func _charge(delta: float):
 		print('arreté')
 		state=STATE.PATROL
 	
-func _on_nose_area_2d_body_entered(body: Node2D) -> void:
-
-	if body.get_child(0) is Bubble and state==STATE.CHARGE :
-		
-		if body.get_child(0).air_volume>damage_amount:
-			body.get_child(0).add_volume(-damage_amount)
-		else:
-			body.get_child(0).set_volume(0)
-		
-		state=STATE.PATROL
-		current_target = null
+	
 	
 func _patrol_movement(delta: float):
 
@@ -71,7 +52,10 @@ func _physics_process(delta: float) -> void:
 
 	match(state):
 		STATE.PREPARE:
-			_prepare(delta)
+			if current_target != null:
+				_prepare(delta)
+			else:
+				state = STATE.PATROL
 		STATE.PATROL:
 			_patrol_movement(delta)
 		STATE.CHARGE:
@@ -79,9 +63,9 @@ func _physics_process(delta: float) -> void:
 			
 
 func _on_time_before_charge_timeout() -> void:
-	
-	target_position=current_target.global_position
-	state=STATE.CHARGE
+	if current_target != null:
+		target_position=current_target.global_position
+		state=STATE.CHARGE
 
 
 func _on_patrol_timer_timeout() -> void:
@@ -89,3 +73,23 @@ func _on_patrol_timer_timeout() -> void:
 	direction_patrol_movement=Vector2(0,direction_patrol_movement.y*-1.0)
 	if state==STATE.PATROL:
 		rotate(PI)
+
+
+func _on_radar_area_2d_area_entered(area: Area2D) -> void:
+	if area is Bubble and state==STATE.PATROL :
+
+		state=STATE.PREPARE
+		current_target=area
+		time_before_charge.start()
+
+
+func _on_nose_area_2d_area_entered(area: Area2D) -> void:
+	if area is Bubble and state==STATE.CHARGE :
+		
+		if area.air_volume>damage_amount:
+			area.add_volume(-damage_amount)
+		else:
+			area.set_volume(0)
+		
+		state=STATE.PATROL
+		current_target = null

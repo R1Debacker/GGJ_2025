@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 class_name Bubble
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -9,6 +9,8 @@ var bubble_scale : float = 1
 var AIR_VOLUME_SCALE : float = 1
 var air_volume : float
 var air_factor = sqrt(AIR_VOLUME_SCALE / PI)
+
+var moving_active : bool = false
 
 func _ready() -> void:
 	set_volume(AIR_VOLUME_SCALE)

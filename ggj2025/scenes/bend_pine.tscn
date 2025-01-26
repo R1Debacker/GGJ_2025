@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cushe2im7ydcb"]
+[gd_scene load_steps=3 format=3 uid="uid://pjxcfvp2q8ft"]
 
 [ext_resource type="Texture2D" uid="uid://5s0otstncf76" path="res://HugoLeBo/DieZones/BendPipe.png" id="1_lia53"]
 [ext_resource type="Script" path="res://scripts/DieZoneArea.gd" id="2_ktlgg"]
@@ -12,14 +12,17 @@ contact_monitor = true
 max_contacts_reported = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_lia53")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 visible = false
+scale = Vector2(0.3, 0.3)
 polygon = PackedVector2Array(-609, -278, -669, -243, -699, -170, -651, -120, -500, -47, -561, 90, -441, -23, -407, -11, -400, 104, -364, 7, -298, 6, -260, 27, -232, 18, -221, 0, -173, -27, -68, 97, -119, -65, -94, -83, 10, -30, -59, -111, -37, -122, 2, -137, 25, -176, 80, -218, 143, -209, 98, -93, 179, -171, 233, -167, 263, -123, 210, -111, 252, -92, 213, -11, 294, -74, 317, -51, 318, -20, 261, -26, 314, 16, 155, 19, 305, 75, 290, 145, 147, 166, 276, 196, 264, 305, 307, 339, 398, 304, 413, 285, 440, 165, 508, 194, 451, 124, 450, 108, 557, 124, 462, 59, 462, -25, 568, -73, 456, -72, 454, -86, 554, -188, 434, -132, 426, -148, 458, -309, 402, -227, 379, -250, 347, -256, 303, -292, 397, -484, 235, -331, 194, -351, 214, -479, 141, -359, 131, -361, 116, -431, 99, -361, 59, -364, 8, -494, 7, -370, -19, -349, -27, -331, -54, -316, -123, -402, -88, -285, -106, -267, -260, -375, -162, -221, -176, -214, -201, -216, -229, -195, -243, -164, -297, -142, -286, -252, -358, -137, -416, -165, -423, -345, -473, -192, -548, -235, -579, -273)
 one_way_collision_margin = 0.0
 
 [node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.3, 0.3)
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("2_ktlgg")
@@ -29,4 +32,4 @@ polygon = PackedVector2Array(-425, -345, -477, -177, -480, -81, -560, 96, -428, 
 one_way_collision_margin = 0.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b80bapp00e1eh"]
+[gd_scene load_steps=11 format=3 uid="uid://dao6o5euadnep"]
 
 [ext_resource type="Texture2D" uid="uid://b715eft6pyv33" path="res://assets/sprites/underwater-diving-files/PNG/enemies/fish-dart.png" id="1_j785q"]
 [ext_resource type="Script" path="res://scripts/dart_fish.gd" id="1_r35t1"]
@@ -89,7 +89,7 @@ one_shot = true
 
 [node name="PatrolTimer" type="Timer" parent="."]
 
-[connection signal="body_entered" from="RadarArea2D" to="." method="_on_radar_area_2d_body_entered"]
-[connection signal="body_entered" from="NoseArea2D" to="." method="_on_nose_area_2d_body_entered"]
+[connection signal="area_entered" from="RadarArea2D" to="." method="_on_radar_area_2d_area_entered"]
+[connection signal="area_entered" from="NoseArea2D" to="." method="_on_nose_area_2d_area_entered"]
 [connection signal="timeout" from="TimeBeforeCharge" to="." method="_on_time_before_charge_timeout"]
 [connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]

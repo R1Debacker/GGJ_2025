@@ -83,6 +83,7 @@ _data = {
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("1_wlt4k")
+speed = null
 damage_amount = 1.0
 metadata/_edit_lock_ = true
 
