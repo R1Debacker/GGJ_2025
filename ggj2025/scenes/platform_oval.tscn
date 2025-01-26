@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv1vi6hjdllgj"]
+
+[ext_resource type="Texture2D" uid="uid://sdoua8lc2p27" path="res://assets/sprites/Mossy Tileset/rounded_platform.png" id="1_hb4yf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47ws3"]
+atlas = ExtResource("1_hb4yf")
+region = Rect2(0, 0, 1284, 888)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1a28a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47ws3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ljeq6"]
+radius = 254.545
+height = 955.844
+
+[node name="Platform5" type="StaticBody2D"]
+position = Vector2(465, 406)
+scale = Vector2(0.385, 0.385)
+collision_mask = 6
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1a28a")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ljeq6")
+metadata/_edit_lock_ = true
