@@ -39,6 +39,7 @@ func init_level():
 		submarine_position += sub_dir * sub_step
 	
 	self.timer.start()
+	Game.beep.play()
 
 func _on_timer_timeout() -> void:
 	self.wait_time -= 1
@@ -50,3 +51,5 @@ func _on_timer_timeout() -> void:
 		for player in players_container.get_children():
 			player.player.active = true
 		self.timer.stop()
+	else:
+		Game.beep.play()
