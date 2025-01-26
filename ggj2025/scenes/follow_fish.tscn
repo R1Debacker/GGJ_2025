@@ -44,7 +44,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_txjhs"]
-radius = 343.111
+radius = 440.01
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tfjck"]
 radius = 21.0
@@ -79,7 +79,6 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RadarArea"]
 shape = SubResource("CircleShape2D_txjhs")
-metadata/_edit_lock_ = true
 
 [node name="FollowingTime" type="Timer" parent="."]
 wait_time = 7.0
@@ -104,9 +103,14 @@ position = Vector2(-1, 4)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_tfjck")
 
+[node name="CheckDistanceWhenFollow" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="RadarArea" to="." method="_on_radar_area_area_entered"]
 [connection signal="timeout" from="FollowingTime" to="." method="_on_following_time_timeout"]
 [connection signal="timeout" from="IdleMovement" to="." method="_on_idle_movement_timeout"]
 [connection signal="timeout" from="GoingBackTimer" to="." method="_on_going_back_timer_timeout"]
 [connection signal="area_entered" from="BodyArea" to="." method="_on_body_area_area_entered"]
+[connection signal="timeout" from="CheckDistanceWhenFollow" to="." method="_on_check_distance_when_follow_timeout"]

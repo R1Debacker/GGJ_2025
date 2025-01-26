@@ -1,7 +1,9 @@
 extends RigidBody2D
 
-@export var damage_amount := 50.0
+@export var damage_amount := 100.0
 @export var enemy_speed := 300.0
+@export var distance_patrol := 300.0
+
 var current_target : Node2D = null
 var target_position := Vector2.ZERO
 var direction_patrol_movement := Vector2(0,1)
@@ -25,7 +27,7 @@ var state :=STATE.PATROL
 func _ready() -> void:
 
 	dart_fish_sprite.play('Idle')
-	patrol_timer.wait_time= 200.0/enemy_speed
+	patrol_timer.wait_time= distance_patrol/enemy_speed
 	patrol_timer.start()
 	
 func _prepare(delta: float):
@@ -79,22 +81,24 @@ func _on_patrol_timer_timeout() -> void:
 
 func _on_radar_area_2d_area_entered(area: Area2D) -> void:
 	if area is Bubble and area.air_volume>0 and !area.moving_active and state==STATE.PATROL :
-		time_before_charge.wait_time=randi() % 4+2
+		time_before_charge.wait_time=randi() % 3+2 # Entre 2 et 4
 		state=STATE.PREPARE
 		current_target=area
 		time_before_charge.start()
 
 
 func _on_nose_area_2d_area_entered(area: Area2D) -> void:
-	if area is Bubble and state==STATE.CHARGE :
-		
-		if area.air_volume>damage_amount:
-			area.add_volume(-damage_amount)
+	
+	if area is Bubble :
+		if !area.moving_active:
+			if area.air_volume>damage_amount:
+				area.add_volume(-damage_amount)
+			else:
+				area.set_volume(0)
+			state=STATE.PATROL
+			current_target = null
 		else:
-			area.set_volume(0)
-		
-		state=STATE.PATROL
-		current_target = null
+			area._burst_bubble()
 
 func _on_in_radar_time_timeout() -> void:
 	
@@ -103,7 +107,7 @@ func _on_in_radar_time_timeout() -> void:
 		if area is Bubble and !area.moving_active:
 			current_target=area
 			state=STATE.PREPARE
-			time_before_charge.wait_time=randi() % 2+3
+			time_before_charge.wait_time=randi() % 3+2 # Entre 2 et 4
 			time_before_charge.start()
 			
 			

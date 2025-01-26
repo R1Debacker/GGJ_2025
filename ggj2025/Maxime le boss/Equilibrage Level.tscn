@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://ba2okpisywb3c"]
+
+[ext_resource type="PackedScene" uid="uid://y3degk013o8y" path="res://scenes/map.tscn" id="1_te0hc"]
+[ext_resource type="PackedScene" uid="uid://b3em41xciomo0" path="res://scenes/oxygen_stock.tscn" id="2_p3u31"]
+[ext_resource type="PackedScene" uid="uid://bpj5rq6vpryhv" path="res://scenes/follow_fish.tscn" id="3_uxben"]
+[ext_resource type="PackedScene" uid="uid://4qiggnmy0p87" path="res://scenes/big_fish.tscn" id="4_h1v41"]
+[ext_resource type="PackedScene" uid="uid://dao6o5euadnep" path="res://scenes/dart_fish.tscn" id="5_es3rh"]
+[ext_resource type="PackedScene" uid="uid://bjinpqjoklw6o" path="res://scenes/water_shader.tscn" id="6_0tunr"]
+[ext_resource type="PackedScene" uid="uid://dyn8uwh07g3p8" path="res://scenes/submarine.tscn" id="7_g7gix"]
+[ext_resource type="PackedScene" uid="uid://dcjrfeay866pw" path="res://scenes/player.tscn" id="8_26toi"]
+
+[node name="EquilibrageLevel" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="Map" parent="." instance=ExtResource("1_te0hc")]
+metadata/_edit_lock_ = true
+
+[node name="OxygenStock" parent="." instance=ExtResource("2_p3u31")]
+position = Vector2(247, 784)
+metadata/_edit_lock_ = true
+
+[node name="BigFish" parent="." instance=ExtResource("4_h1v41")]
+position = Vector2(781, 508)
+
+[node name="DartFish" parent="." instance=ExtResource("5_es3rh")]
+position = Vector2(1141, 868)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" parent="." instance=ExtResource("6_0tunr")]
+metadata/_edit_lock_ = true
+
+[node name="Submarine" parent="." instance=ExtResource("7_g7gix")]
+position = Vector2(1682, 187)
+scale = Vector2(-2, 2)
+
+[node name="Player" parent="." instance=ExtResource("8_26toi")]
+position = Vector2(1682, 184)
+
+[node name="FollowFish" parent="." instance=ExtResource("3_uxben")]
+position = Vector2(767, 273)

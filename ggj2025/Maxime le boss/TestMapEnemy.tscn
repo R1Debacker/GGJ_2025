@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dao6o5euadnep" path="res://scenes/dart_fish.tscn" id="3_o1lg0"]
 [ext_resource type="PackedScene" uid="uid://dyn8uwh07g3p8" path="res://scenes/submarine.tscn" id="3_wxspl"]
 [ext_resource type="PackedScene" uid="uid://b3em41xciomo0" path="res://scenes/oxygen_stock.tscn" id="4_pjpvy"]
-[ext_resource type="PackedScene" path="res://scenes/water_shader.tscn" id="5_hahld"]
+[ext_resource type="PackedScene" uid="uid://bjinpqjoklw6o" path="res://scenes/water_shader.tscn" id="5_hahld"]
 [ext_resource type="PackedScene" uid="uid://dcjrfeay866pw" path="res://scenes/player.tscn" id="6_h716r"]
 
 [node name="Node2D" type="Node2D"]

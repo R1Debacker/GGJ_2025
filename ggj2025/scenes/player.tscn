@@ -113,6 +113,7 @@ shape = SubResource("CircleShape2D_ffn7u")
 [node name="Player" type="CharacterBody2D" parent="."]
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
+collision_mask = 17
 motion_mode = 1
 script = ExtResource("2_50xkt")
 

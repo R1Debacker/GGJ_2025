@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://qx2grpq0q4ya" path="res://assets/sprites/SFX/Several Water Bubble sound.mp3" id="4_a8olk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ehygj"]
-radius = 119.08
+radius = 82.5061
 
 [sub_resource type="Animation" id="Animation_sby0r"]
 length = 0.001
@@ -76,6 +76,7 @@ offset_top = -4.0
 offset_right = -2.0
 offset_bottom = 4.0
 value = 0.0
+texture_progress = null
 Submarine = NodePath("../Sprite2D")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

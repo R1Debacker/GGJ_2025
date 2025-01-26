@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://4qiggnmy0p87"]
+[gd_scene load_steps=18 format=3 uid="uid://4qiggnmy0p87"]
 
 [ext_resource type="Script" path="res://scripts/big_fish.gd" id="1_wlt4k"]
 [ext_resource type="Texture2D" uid="uid://b5l001avb8kjm" path="res://assets/sprites/globe_fish.png" id="2_f4pb5"]
@@ -74,7 +74,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j5k8w"]
-radius = 14.0357
+radius = 20.025
 
 [sub_resource type="Animation" id="Animation_73mno"]
 length = 0.001
@@ -113,12 +113,14 @@ _data = {
 "ScaleUp": SubResource("Animation_vjmub")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_efs2n"]
+radius = 14.0357
+
 [node name="BigFish" type="Area2D"]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 8
 script = ExtResource("1_wlt4k")
 damage_amount = 1.0
-metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wrvtf")
@@ -126,7 +128,7 @@ animation = &"Idle"
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(2, 2)
 shape = SubResource("CircleShape2D_j5k8w")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -135,12 +137,24 @@ libraries = {
 }
 
 [node name="ScaleUpTimer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 10.0
 autostart = true
 
 [node name="ChangeDirectionTimer" type="Timer" parent="."]
 wait_time = 4.0
 autostart = true
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 20
+collision_mask = 2
+mass = 50.0
+gravity_scale = 0.0
+freeze = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(2, 2)
+shape = SubResource("CircleShape2D_efs2n")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="ScaleUpTimer" to="." method="_on_scale_up_timer_timeout"]
