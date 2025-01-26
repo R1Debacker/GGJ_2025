@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://buac86mfls7xx"]
+[gd_scene load_steps=7 format=3 uid="uid://buac86mfls7xx"]
 
 [ext_resource type="Script" path="res://autoloads/Game.gd" id="1_06ibk"]
 [ext_resource type="AudioStream" uid="uid://ctx0djew58i1k" path="res://HugoLeBo/UI_Menus/bubbles_A#_major.wav" id="2_bl4pm"]
 [ext_resource type="AudioStream" uid="uid://3e4n06c0xkli" path="res://assets/sprites/SFX/Pas mal musique fond.mp3" id="3_nlste"]
 [ext_resource type="AudioStream" uid="uid://dl0xmt1gltwk5" path="res://assets/sprites/SFX/Borne 49.3 a la con.mp3" id="3_ryfkl"]
-[ext_resource type="AudioStream" uid="uid://cn37lkwa7c7bd" path="res://assets/sprites/SFX/Bubble Pop 1.mp3" id="4_aspm5"]
+[ext_resource type="AudioStream" uid="uid://cr26f1ltfvvos" path="res://assets/sprites/SFX/retro-game-music-245230.mp3" id="3_welhq"]
+[ext_resource type="AudioStream" uid="uid://bhp28sv47k2by" path="res://assets/sprites/SFX/Bubble Pop 1.mp3" id="4_aspm5"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_06ibk")
@@ -15,9 +16,8 @@ script = ExtResource("1_06ibk")
 stream = ExtResource("2_bl4pm")
 
 [node name="BackSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_nlste")
+stream = ExtResource("3_welhq")
 pitch_scale = 0.88
-autoplay = true
 bus = &"Fond"
 parameters/looping = true
 
@@ -29,8 +29,12 @@ bus = &"BubbleDeletion"
 stream = ExtResource("3_ryfkl")
 bus = &"Ellie"
 
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_nlste")
+autoplay = true
+bus = &"MenuMusic"
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
-autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
