@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=9 format=3 uid="uid://4a3q1b8iyovj"]
+[gd_resource type="AudioBusLayout" load_steps=9 format=3 uid="uid://y12jayrj0e74"]
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_phqm0"]
 resource_name = "Reverb"
