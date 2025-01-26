@@ -25,14 +25,6 @@ func _ready() -> void:
 	dart_fish_sprite.play('Idle')
 	patrol_timer.wait_time= 200.0/enemy_speed
 	patrol_timer.start()
-
-func _on_radar_area_2d_body_entered(body: Node2D) -> void:
-
-	if body.get_child(1) is Bubble and state==STATE.PATROL :
-
-		state=STATE.PREPARE
-		current_target=body.get_child(1)
-		time_before_charge.start()
 	
 func _prepare(delta: float):
 	look_at(current_target.global_position)
@@ -47,19 +39,6 @@ func _charge(delta: float):
 	if global_position==target_position:
 		print('arreté')
 		state=STATE.PATROL
-	
-func _on_nose_area_2d_body_entered(body: Node2D, Area2D) -> void:
-	
-	if body.get_child(1) is Bubble and state==STATE.CHARGE :
-		
-		if body.get_child(1).air_volume>damage_amount:
-			body.get_child(1).add_volume(-damage_amount)
-		else:
-			body.get_child(1).set_volume(0)
-		
-		state=STATE.PATROL
-		current_target = null
-		
 	
 	
 func _patrol_movement(delta: float):

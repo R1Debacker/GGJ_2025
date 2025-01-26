@@ -1,10 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhddc3mkgrqo8"]
+[gd_scene load_steps=3 format=3 uid="uid://c4x83thvwdvtk"]
 
-[ext_resource type="PackedScene" uid="uid://bftoqrr5fer6b" path="res://scenes/bubble.tscn" id="1_2dkt7"]
+[ext_resource type="PackedScene" uid="uid://c3knjy71udjcr" path="res://scenes/bubble.tscn" id="1_2dkt7"]
 [ext_resource type="Script" path="res://scripts/moving_bubble.gd" id="2_op5hq"]
 
 [node name="Bubble" instance=ExtResource("1_2dkt7")]
-collision_layer = 1
 script = ExtResource("2_op5hq")
 x_speed = 5.0
 y_speed = 20.0

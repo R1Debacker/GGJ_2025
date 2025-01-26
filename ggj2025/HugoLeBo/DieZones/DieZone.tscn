@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlt4260a21c2g"]
+[gd_scene load_steps=4 format=3 uid="uid://dlt4260a21c2g"]
 
-[ext_resource type="PackedScene" uid="uid://cushe2im7ydcb" path="res://scenes/bend_pine.tscn" id="2_7saym"]
+[ext_resource type="PackedScene" uid="uid://pjxcfvp2q8ft" path="res://scenes/bend_pine.tscn" id="2_7saym"]
+[ext_resource type="PackedScene" uid="uid://cdr31qjr0dq4" path="res://scenes/horizontal_pine.tscn" id="3_bdmiu"]
 [ext_resource type="PackedScene" uid="uid://dcjrfeay866pw" path="res://scenes/player.tscn" id="3_sdohv"]
 
 [node name="DieZone" type="Node2D"]
@@ -10,3 +11,6 @@ position = Vector2(345, 176)
 
 [node name="BendPine" parent="." instance=ExtResource("2_7saym")]
 position = Vector2(262, 116)
+
+[node name="horizontal_pine" parent="." instance=ExtResource("3_bdmiu")]
+position = Vector2(778, 639)

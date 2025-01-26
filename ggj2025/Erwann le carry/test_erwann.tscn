@@ -43,7 +43,6 @@ metadata/_edit_lock_ = true
 
 [node name="Enemy" parent="." instance=ExtResource("6_kgl1f")]
 position = Vector2(518, 200)
-damage_amount = 10.0
 
 [node name="BigFish" parent="." instance=ExtResource("7_rye87")]
 position = Vector2(803, 901)
