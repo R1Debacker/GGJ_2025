@@ -1,7 +1,6 @@
-extends Node2D
+extends RigidBody2D
 
 @export var damage_amount := 50.0
-@export var distance_to_touch := 25.0
 @export var enemy_speed := 300.0
 var current_target : Node2D = null
 var origin_position := Vector2.ZERO
@@ -11,6 +10,9 @@ var direction_idle_movement := Vector2(1,0)
 @onready var following_time: Timer = $FollowingTime
 @onready var enemy_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var idle_movement: Timer = $IdleMovement
+@onready var going_back_timer: Timer = $GoingBackTimer
+@onready var in_radar_zone_time: Timer = $InRadarZoneTime
+@onready var radar_area: Area2D = $RadarArea
 
 
 enum STATE{
@@ -28,28 +30,28 @@ func _ready() -> void:
 	idle_movement.wait_time=600.0/enemy_speed
 	idle_movement.start()
 
-func _on_body_entered(body: Node) -> void:
-	
-	if body is Player and state==STATE.FOLLOW :
-		state=STATE.GOINGBACK
-		current_target = null
-
-func _on_radar_area_body_entered(body: Node2D) -> void:
-
-	if body is Player and state!=STATE.FOLLOW :
-
+func _on_radar_area_area_entered(area: Area2D) -> void:
+	if area is Bubble and area.air_volume>0 and !area.moving_active and state!=STATE.FOLLOW :
 		state=STATE.FOLLOW
-		current_target=body
+		current_target = area
 		following_time.start()
 
-		
 func _follow(delta: float):
 	
 	look_at(current_target.global_position)
 	enemy_sprite.flip_v = current_target.global_position.x<global_position.x
 	global_position=global_position.move_toward(current_target.global_position,delta*enemy_speed)
-	if $Beak.global_position.distance_to(current_target.global_position)<3.0:
-		_on_body_entered(current_target)
+
+func _on_body_area_area_entered(area: Area2D) -> void:
+	
+	if area is Bubble:
+		if area.air_volume>damage_amount:
+			area.add_volume(-damage_amount)
+		else:
+			area.set_volume(0)
+		state=STATE.GOINGBACK
+		going_back_timer.start()
+		current_target = null
 	
 func _patrol_movement(delta: float):
 	
@@ -70,7 +72,10 @@ func _physics_process(delta: float) -> void:
 
 	match(state):
 		STATE.FOLLOW:
-			_follow(delta)
+			if current_target != null:
+				_follow(delta)
+			else:
+				state = STATE.GOINGBACK
 		STATE.GOINGBACK:
 			_going_back(delta)
 		STATE.PATROL:
@@ -81,9 +86,28 @@ func _on_following_time_timeout() -> void:
 	
 	if state==STATE.FOLLOW:
 		state=STATE.GOINGBACK
+		going_back_timer.start()
 		current_target = null
 		
 		
 func _on_idle_movement_timeout() -> void:
 	
 	direction_idle_movement=Vector2(direction_idle_movement.x*-1.0,0)
+
+
+func _on_going_back_timer_timeout() -> void:
+	
+	origin_position=global_position
+	state=STATE.PATROL
+	for area in radar_area.get_overlapping_areas():
+		
+		if area is Bubble and !area.moving_active:
+			current_target=area
+			state=STATE.FOLLOW
+	
+	
+
+
+
+
+		

@@ -43,6 +43,7 @@ animations = [{
 
 [node name="OxygenStock" type="Node2D"]
 script = ExtResource("1_tx5h2")
+initial_stock = 500.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -140.7)
@@ -50,7 +51,6 @@ sprite_frames = SubResource("SpriteFrames_d7lyr")
 animation = &"Idle"
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 4.0
 autostart = true
 
 [node name="SpawnPosition" type="Node2D" parent="."]

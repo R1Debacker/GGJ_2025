@@ -6,9 +6,8 @@ var x_dir_factor = 1.0
 @onready var life_timer: Timer = $"LifeTimer"
 @onready var change_direction_timer: Timer = $"ChangeDirectionTimer"
 
-var moving_active : bool = true
-
 func _ready() -> void:
+	moving_active = true
 	life_timer.wait_time = randf_range(10.0, 15.0)
 
 func _physics_process(delta: float) -> void:

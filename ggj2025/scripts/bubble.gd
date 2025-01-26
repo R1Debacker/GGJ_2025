@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 class_name Bubble
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -10,6 +10,8 @@ var AIR_VOLUME_SCALE : float = 1
 var air_volume : float
 var air_factor = sqrt(AIR_VOLUME_SCALE / PI)
 
+var moving_active : bool = false
+
 func _ready() -> void:
 	set_volume(AIR_VOLUME_SCALE)
 
@@ -20,11 +22,17 @@ func _on_body_entered(body: Node) -> void:
 		body.collect(self)
 
 func _burst_bubble():
+	self.air_volume=0
+	animated_sprite_2d.play('Burst')
+	
+func _on_animated_sprite_2d_animation_finished() -> void:
+	
 	queue_free()
 
 func set_volume(new_vol : float):
 	if new_vol < 1e-2:
-		_burst_bubble()
+		if animated_sprite_2d != null:
+			_burst_bubble()
 	bubble_scale = sqrt(new_vol / PI)
 	self.scale = Vector2(bubble_scale / air_factor , bubble_scale / air_factor)
 	self.air_volume = new_vol

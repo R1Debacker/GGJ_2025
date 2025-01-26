@@ -5,13 +5,13 @@
 
 [node name="DiscoBorn" type="Node2D"]
 
-[node name="BackSound" type="AudioStreamPlayer2D" parent="."]
+[node name="Bornecall" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_s23vg")
 pitch_scale = 0.88
 bus = &"Ellie"
 parameters/looping = true
 
-[node name="EllieSound" type="AudioStreamPlayer2D" parent="."]
+[node name="BackSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_t20nn")
 autoplay = true
 bus = &"Fond"
