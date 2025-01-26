@@ -5,6 +5,8 @@ extends Node
 @onready var back_sound: AudioStreamPlayer2D = $BackSound
 @onready var ellie: AudioStreamPlayer2D = $Ellie
 @onready var menu_music: AudioStreamPlayer2D = $MenuMusic
+@onready var bubble_pop_petites: AudioStreamPlayer2D = $"Bubble pop petites"
+
 
 const BUBBLE = preload("res://scenes/bubble.tscn")
 const MOVING_BUBBLE = preload("res://scenes/moving_bubble.tscn")

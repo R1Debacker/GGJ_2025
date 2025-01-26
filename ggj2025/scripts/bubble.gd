@@ -31,7 +31,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 func set_volume(new_vol : float):
 	if new_vol < 1e-2:
-		_burst_bubble()
+		if animated_sprite_2d != null:
+			_burst_bubble()
 	bubble_scale = sqrt(new_vol / PI)
 	self.scale = Vector2(bubble_scale / air_factor , bubble_scale / air_factor)
 	self.air_volume = new_vol

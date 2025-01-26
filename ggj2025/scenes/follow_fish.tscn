@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpj5rq6vpryhv"]
+[gd_scene load_steps=11 format=3 uid="uid://bpj5rq6vpryhv"]
 
 [ext_resource type="Script" path="res://scripts/follow_fish.gd" id="1_ugw0d"]
 [ext_resource type="Texture2D" uid="uid://byoyjmrflddx1" path="res://assets/sprites/underwater-diving-files/PNG/enemies/fish.png" id="2_iih3s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hc2q5"]
-radius = 17.0
-height = 76.0
+radius = 22.0
+height = 58.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h1krk"]
 atlas = ExtResource("2_iih3s")
@@ -46,15 +46,20 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_txjhs"]
 radius = 343.111
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tfjck"]
+radius = 21.0
+height = 52.0
+
 [node name="FollowFish" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 9
 gravity_scale = 0.0
 script = ExtResource("1_ugw0d")
+enemy_speed = 160.0
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(-1, 5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_hc2q5")
 
@@ -65,20 +70,23 @@ scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ae6jm")
 animation = &"Idle"
 frame_progress = 0.53864
+metadata/_edit_lock_ = true
 
 [node name="RadarArea" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 8
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RadarArea"]
 shape = SubResource("CircleShape2D_txjhs")
+metadata/_edit_lock_ = true
 
 [node name="FollowingTime" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 7.0
 one_shot = true
 
 [node name="Beak" type="Node2D" parent="."]
-position = Vector2(37, 1)
+position = Vector2(29, 11)
 
 [node name="IdleMovement" type="Timer" parent="."]
 wait_time = 2.0
@@ -87,8 +95,18 @@ wait_time = 2.0
 wait_time = 4.0
 one_shot = true
 
+[node name="BodyArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea"]
+position = Vector2(-1, 4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tfjck")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="RadarArea" to="." method="_on_radar_area_area_entered"]
 [connection signal="timeout" from="FollowingTime" to="." method="_on_following_time_timeout"]
 [connection signal="timeout" from="IdleMovement" to="." method="_on_idle_movement_timeout"]
 [connection signal="timeout" from="GoingBackTimer" to="." method="_on_going_back_timer_timeout"]
+[connection signal="area_entered" from="BodyArea" to="." method="_on_body_area_area_entered"]

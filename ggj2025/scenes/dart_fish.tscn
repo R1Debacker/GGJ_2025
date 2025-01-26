@@ -89,7 +89,12 @@ one_shot = true
 
 [node name="PatrolTimer" type="Timer" parent="."]
 
+[node name="InRadarTime" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="area_entered" from="RadarArea2D" to="." method="_on_radar_area_2d_area_entered"]
 [connection signal="area_entered" from="NoseArea2D" to="." method="_on_nose_area_2d_area_entered"]
 [connection signal="timeout" from="TimeBeforeCharge" to="." method="_on_time_before_charge_timeout"]
 [connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]
+[connection signal="timeout" from="InRadarTime" to="." method="_on_in_radar_time_timeout"]

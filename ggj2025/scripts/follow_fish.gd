@@ -11,6 +11,8 @@ var direction_idle_movement := Vector2(1,0)
 @onready var enemy_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var idle_movement: Timer = $IdleMovement
 @onready var going_back_timer: Timer = $GoingBackTimer
+@onready var in_radar_zone_time: Timer = $InRadarZoneTime
+@onready var radar_area: Area2D = $RadarArea
 
 
 enum STATE{
@@ -28,23 +30,25 @@ func _ready() -> void:
 	idle_movement.wait_time=600.0/enemy_speed
 	idle_movement.start()
 
+func _on_radar_area_area_entered(area: Area2D) -> void:
+	if area is Bubble and area.air_volume>0 and !area.moving_active and state!=STATE.FOLLOW :
+		state=STATE.FOLLOW
+		current_target = area
+		following_time.start()
 
-		
 func _follow(delta: float):
 	
 	look_at(current_target.global_position)
 	enemy_sprite.flip_v = current_target.global_position.x<global_position.x
 	global_position=global_position.move_toward(current_target.global_position,delta*enemy_speed)
-	if $Beak.global_position.distance_to(current_target.global_position)<3.0:
-		_on_body_entered(current_target)
+
+func _on_body_area_area_entered(area: Area2D) -> void:
 	
-func _on_body_entered(body: Node) -> void:
-	
-	if body is Bubble and state==STATE.FOLLOW :
-		if body.air_volume>damage_amount:
-			body.add_volume(-damage_amount)
+	if area is Bubble:
+		if area.air_volume>damage_amount:
+			area.add_volume(-damage_amount)
 		else:
-			body.set_volume(0)
+			area.set_volume(0)
 		state=STATE.GOINGBACK
 		going_back_timer.start()
 		current_target = null
@@ -95,10 +99,15 @@ func _on_going_back_timer_timeout() -> void:
 	
 	origin_position=global_position
 	state=STATE.PATROL
+	for area in radar_area.get_overlapping_areas():
+		
+		if area is Bubble and !area.moving_active:
+			current_target=area
+			state=STATE.FOLLOW
+	
+	
 
 
-func _on_radar_area_area_entered(area: Area2D) -> void:
-	if area is Bubble and !area.moving_active and state!=STATE.FOLLOW :
-		state=STATE.FOLLOW
-		current_target = area
-		following_time.start()
+
+
+		

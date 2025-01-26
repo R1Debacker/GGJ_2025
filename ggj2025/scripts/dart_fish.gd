@@ -6,9 +6,11 @@ var current_target : Node2D = null
 var target_position := Vector2.ZERO
 var direction_patrol_movement := Vector2(0,1)
 
+@onready var radar_area_2d: Area2D = $RadarArea2D
 @onready var patrol_timer: Timer = $PatrolTimer
 @onready var time_before_charge: Timer = $TimeBeforeCharge
 @onready var dart_fish_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var in_radar_time: Timer = $InRadarTime
 
 
 enum STATE{
@@ -37,8 +39,9 @@ func _charge(delta: float):
 	global_position=global_position.move_toward(target_position,delta*enemy_speed)
 	
 	if global_position==target_position:
-		print('arreté')
+
 		state=STATE.PATROL
+		in_radar_time.start()
 	
 	
 func _patrol_movement(delta: float):
@@ -75,8 +78,8 @@ func _on_patrol_timer_timeout() -> void:
 
 
 func _on_radar_area_2d_area_entered(area: Area2D) -> void:
-	if area is Bubble and state==STATE.PATROL :
-
+	if area is Bubble and area.air_volume>0 and !area.moving_active and state==STATE.PATROL :
+		time_before_charge.wait_time=randi() % 4+2
 		state=STATE.PREPARE
 		current_target=area
 		time_before_charge.start()
@@ -92,3 +95,15 @@ func _on_nose_area_2d_area_entered(area: Area2D) -> void:
 		
 		state=STATE.PATROL
 		current_target = null
+
+func _on_in_radar_time_timeout() -> void:
+	
+	for area in radar_area_2d.get_overlapping_areas():
+		
+		if area is Bubble and !area.moving_active:
+			current_target=area
+			state=STATE.PREPARE
+			time_before_charge.wait_time=randi() % 2+3
+			time_before_charge.start()
+			
+			
