@@ -37,6 +37,7 @@ func init_level():
 		submarine.get_node("Localposition/VictoryPosition/Sprite2D").self_modulate = player.player.color
 		submarine.player_index = player_idx
 		submarine_position += sub_dir * sub_step
+		Game.submarines.append(submarine)
 	
 	self.timer.start()
 	Game.beep.play()

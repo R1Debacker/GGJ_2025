@@ -15,7 +15,7 @@ func _ready() -> void:
 	$AnimationPlayer.play("vertical_animation")
 	
 func _process(delta: float) -> void:
-	if current_shrimp != null && current_shrimp.has_bubble && current_shrimp.bubble.air_volume > 0.0:
+	if current_shrimp != null && current_shrimp.device_idx == player_index && current_shrimp.has_bubble && current_shrimp.bubble.air_volume > 0.0:
 		if audio_stream_player_2d.is_playing() == false:
 				audio_stream_player_2d.play()
 		var oxygen_value := filling_speed * delta

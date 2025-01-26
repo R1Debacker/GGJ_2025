@@ -101,7 +101,7 @@ script = ExtResource("1_xs50q")
 [node name="Bubble" type="RigidBody2D" parent="."]
 position = Vector2(0, 27)
 collision_layer = 32768
-collision_mask = 2
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_w022o")
 gravity_scale = 0.0
 can_sleep = false

@@ -12,6 +12,7 @@ class_name Player
 @export var dash_speed = 30000.0
 @export var drag_resistance = 0.98
 @export var dash_delay_ms : float = 1000.0
+@export var invicibility_time_after_collect := 1.0
 @export var device_idx : int = 0
 @export var color : Color = Color.RED:
 	set(value):
@@ -106,3 +107,6 @@ func collect(hit_bubble: Bubble):
 		hit_bubble.queue_free()
 	else:
 		hit_bubble.switch_owner(self)
+	self.bubble.invivibility_timer.wait_time = invicibility_time_after_collect
+	self.bubble.invivibility_timer.start()
+	self.bubble.invicibility = true
