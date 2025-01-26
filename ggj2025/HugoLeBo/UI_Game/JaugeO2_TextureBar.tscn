@@ -1,18 +1,58 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkldwn0auf1s7"]
+[gd_scene load_steps=7 format=3 uid="uid://dkldwn0auf1s7"]
 
 [ext_resource type="Texture2D" uid="uid://ci6g6rst8o8k0" path="res://HugoLeBo/UI_Game/progress bar least rounded over.png" id="1_8ilub"]
-[ext_resource type="Texture2D" uid="uid://bypj7c26h36c6" path="res://HugoLeBo/UI_Game/progress bar least rounded progress dark green.png" id="2_753uh"]
+[ext_resource type="Texture2D" uid="uid://bpp4w6stsusq" path="res://HugoLeBo/UI_Game/progress bar least rounded progress green.png" id="2_xtyqk"]
 [ext_resource type="Script" path="res://HugoLeBo/UI_Game/O2progress_bar.gd" id="3_2touh"]
 
+[sub_resource type="Animation" id="Animation_7jgya"]
+resource_name = "clignotte"
+length = 0.8
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_xtyqk"), ExtResource("1_8ilub"), ExtResource("2_xtyqk")]
+}
+
+[sub_resource type="Animation" id="Animation_h4tna"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_xtyqk")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pv5d6"]
+_data = {
+"RESET": SubResource("Animation_h4tna"),
+"clignotte": SubResource("Animation_7jgya")
+}
+
 [node name="TextureProgressBar" type="TextureProgressBar"]
+use_parent_material = true
 offset_left = 156.0
 offset_top = -64.0
 offset_right = 188.0
 offset_bottom = -56.0
 max_value = 1.0
 step = 0.01
+value = 0.5
 texture_under = ExtResource("1_8ilub")
-texture_progress = ExtResource("2_753uh")
+texture_progress = ExtResource("2_xtyqk")
 script = ExtResource("3_2touh")
 
 [node name="Label" type="Label" parent="."]
@@ -25,3 +65,8 @@ scale = Vector2(0.075, 0.075)
 theme_override_font_sizes/font_size = 60
 text = "O2"
 horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pv5d6")
+}
