@@ -12,15 +12,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	position += dir * delta * speed
 	for body in get_overlapping_areas():
-		print(body)
 		if body is Bubble:
 			body.add_volume(-damage_amount * scale.x * delta)
 
-
-
 func _on_scale_up_timer_timeout() -> void:
 	animation_player.play("ScaleUp")
-
 
 func _on_change_direction_timer_timeout() -> void:
 	dir = Vector2(dir.x * -1.0, 0)

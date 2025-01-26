@@ -22,6 +22,7 @@ func _process(delta: float) -> void:
 			player.player.device_idx = device_idx
 			player.player.color = Game.avail_colors.pop_front()
 			Game.players.append(player)
+			Game.players_color.append(player.player.color)
 	
 	for device_idx in Game.players_idx:
 		if Input.is_joy_button_pressed(device_idx, JOY_BUTTON_START):

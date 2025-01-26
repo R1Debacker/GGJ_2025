@@ -28,6 +28,7 @@ var avail_colors := [
 
 var players : Array = []
 var players_idx : Array = []
+var players_color : Array = []
 var nb_players : int :
 	get:
 		return players.size()

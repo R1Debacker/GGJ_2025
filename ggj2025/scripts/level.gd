@@ -20,18 +20,20 @@ func init_level():
 	var sub_step = (end_submarine_spawn.global_position - start_submarine_spawn.global_position).length() / Game.nb_players
 	var submarine_position = start_submarine_spawn.global_position
 	for i in rng:
-		var player = Game.players[i]
+		var player_color = Game.players_color[i]
 		var player_idx = Game.players_idx[i]
-		var alpha = (j/(Game.nb_players-1))
+		
+		## instanciate player
+		var player = Game.PLAYER.instantiate()
+		players_container.add_child(player)
+		player.global_position = submarine_position
+		player.player.device_idx = player_idx
+		player.player.color = player_color
+		player.player.active = false
+		
 		var submarine: Submarine  = Game.SUBMARINE.instantiate()
 		submarine_container.add_child(submarine)
 		submarine.animation_player.pause()
-		#submarine.animation_player.seek(alpha*(submarine.animation_player.current_animation_length/2), true)
-		Game.remove_child(player)
-		players_container.add_child(player)
-		player.global_position = submarine_position
-		player.player.position = Vector2(0, 0)
-		player.player.active = false
 		submarine.global_position = submarine_position
 		submarine.modulate = player.player.color
 		
