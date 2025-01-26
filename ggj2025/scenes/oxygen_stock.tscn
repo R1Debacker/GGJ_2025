@@ -70,6 +70,5 @@ position = Vector2(-166, 0)
 rotation = -1.5708
 scale = Vector2(5, 5)
 stream = ExtResource("4_tmnu2")
-bus = &"BubbleSpawn"
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

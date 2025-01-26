@@ -23,7 +23,6 @@ parameters/looping = true
 
 [node name="BubblePop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_aspm5")
-bus = &"BubbleDeletion"
 
 [node name="Ellie" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_ryfkl")
@@ -32,7 +31,6 @@ bus = &"Ellie"
 [node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_nlste")
 autoplay = true
-bus = &"MenuMusic"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
