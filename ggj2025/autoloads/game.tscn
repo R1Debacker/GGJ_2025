@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://buac86mfls7xx"]
+[gd_scene load_steps=9 format=3 uid="uid://buac86mfls7xx"]
 
 [ext_resource type="Script" path="res://autoloads/Game.gd" id="1_06ibk"]
 [ext_resource type="AudioStream" uid="uid://ctx0djew58i1k" path="res://HugoLeBo/UI_Menus/bubbles_A#_major.wav" id="2_bl4pm"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cr26f1ltfvvos" path="res://assets/sprites/SFX/retro-game-music-245230.mp3" id="3_welhq"]
 [ext_resource type="AudioStream" uid="uid://bhp28sv47k2by" path="res://assets/sprites/SFX/Bubble Pop 1.mp3" id="4_aspm5"]
 [ext_resource type="AudioStream" uid="uid://b2uy71ksjr3yl" path="res://assets/sprites/SFX/Sylvain.mp3" id="7_0nghx"]
+[ext_resource type="AudioStream" uid="uid://d3xys1ja4fhlb" path="res://assets/sprites/SFX/short-beep-tone-47916.mp3" id="8_iced5"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_06ibk")
@@ -43,5 +44,9 @@ stream = ExtResource("4_aspm5")
 [node name="Sylvain" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_0nghx")
 bus = &"Ellie"
+
+[node name="beep" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_iced5")
+bus = &"beep"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
