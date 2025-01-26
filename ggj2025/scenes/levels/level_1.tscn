@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://oxjd4j8n6ifb"]
+
+[ext_resource type="PackedScene" uid="uid://y3degk013o8y" path="res://scenes/map.tscn" id="1_205tb"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_rdk0u"]
+[ext_resource type="PackedScene" uid="uid://b3em41xciomo0" path="res://scenes/oxygen_stock.tscn" id="3_5pqyt"]
+[ext_resource type="PackedScene" uid="uid://breeky17d2slx" path="res://scenes/water_shader.tscn" id="5_o14ac"]
+[ext_resource type="PackedScene" uid="uid://bpj5rq6vpryhv" path="res://scenes/enemy.tscn" id="6_2xlaj"]
+[ext_resource type="FontFile" uid="uid://b8i5ovcrke3e" path="res://HugoLeBo/UI_Menus/PlayfulTime-BLBB8.ttf" id="6_hu4rw"]
+[ext_resource type="PackedScene" path="res://scenes/big_fish.tscn" id="7_uxlgq"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_rdk0u")
+
+[node name="Map" parent="." instance=ExtResource("1_205tb")]
+metadata/_edit_lock_ = true
+
+[node name="OxygenStock" parent="." instance=ExtResource("3_5pqyt")]
+position = Vector2(247, 784)
+
+[node name="Enemy" parent="." instance=ExtResource("6_2xlaj")]
+position = Vector2(518, 200)
+
+[node name="BigFish" parent="." instance=ExtResource("7_uxlgq")]
+position = Vector2(1030, 366)
+
+[node name="StartSubmarineSpawn" type="Marker2D" parent="."]
+position = Vector2(1687, 102)
+gizmo_extents = 80.0
+
+[node name="EndSubmarineSpawn" type="Marker2D" parent="."]
+position = Vector2(1727, 921)
+gizmo_extents = 80.0
+
+[node name="SubmarineContainer" type="Node2D" parent="."]
+
+[node name="PlayersContainer" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 816.0
+offset_top = 226.0
+offset_right = 1030.0
+offset_bottom = 859.0
+theme_override_fonts/font = ExtResource("6_hu4rw")
+theme_override_font_sizes/font_size = 500
+text = "5"
+
+[node name="Timer" type="Timer" parent="Label"]
+
+[node name="Sprite2D" parent="." instance=ExtResource("5_o14ac")]
+metadata/_edit_lock_ = true
+
+[connection signal="timeout" from="Label/Timer" to="." method="_on_timer_timeout"]

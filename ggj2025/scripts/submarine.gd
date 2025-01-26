@@ -1,8 +1,11 @@
 extends Node2D
+class_name Submarine
 @onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
 @export var filling_speed := 50.0
 @export var target_oxygen_level := 1000.0
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 
 var current_oxygen_level := 0.0
 var current_shrimp : CharacterBody2D = null

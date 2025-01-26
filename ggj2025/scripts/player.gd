@@ -13,22 +13,31 @@ class_name Player
 @export var drag_resistance = 0.98
 @export var dash_delay_ms : float = 1000.0
 @export var device_idx : int = 0
+@export var color : Color = Color("red"):
+	set(value):
+		player_sprite.modulate = value
+		color = value
+
 var timestamp_last_use_dash : float = 0
 
 var default_length : float = 0
 var dir : Vector2 = Vector2(0, 0)
 var env_velocity : Vector2 = Vector2(0, 0)
 var is_dash_pressed = true
+var active : bool = true
 
 var has_bubble : bool :
 	get:
 		return bubble != null
 
 func _ready() -> void:
+	self.player_sprite.modulate = self.color
 	if has_bubble:
 		default_length = (self.global_position - bubble.global_position).length() / bubble.bubble_scale
 
 func _process(delta: float) -> void:
+	if not active:
+		return
 	if has_bubble:
 		damped_spring_joint_2d.length = default_length * bubble.bubble_scale * 0.8
 		damped_spring_joint_2d.rest_length = default_length * bubble.bubble_scale * 0.8
@@ -73,6 +82,8 @@ func dash_logic():
 	return _velocity
 
 func _physics_process(delta: float) -> void:
+	if not active:
+		return
 	var _velocity = Vector2(0,0)
 	
 	_velocity += dash_logic()

@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0ksac4r53m4k"]
+
+[ext_resource type="Script" path="res://scripts/lobby.gd" id="1_vc4d4"]
+[ext_resource type="PackedScene" uid="uid://breeky17d2slx" path="res://scenes/water_shader.tscn" id="2_yrhn7"]
+[ext_resource type="PackedScene" uid="uid://dyn8uwh07g3p8" path="res://scenes/submarine.tscn" id="3_mhad8"]
+[ext_resource type="PackedScene" uid="uid://b3em41xciomo0" path="res://scenes/oxygen_stock.tscn" id="4_gg8yl"]
+[ext_resource type="PackedScene" uid="uid://bpj5rq6vpryhv" path="res://scenes/enemy.tscn" id="5_wn4pu"]
+[ext_resource type="PackedScene" uid="uid://b735q8edfkty1" path="res://scenes/platform_flat_long.tscn" id="7_csji5"]
+[ext_resource type="PackedScene" uid="uid://dv1vi6hjdllgj" path="res://scenes/platform_oval.tscn" id="8_2nuho"]
+
+[node name="Lobby" type="Node2D"]
+script = ExtResource("1_vc4d4")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1076.0
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 75
+text = "Click on A to join the Game"
+
+[node name="Label2" type="Label" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 35
+text = "
+
+Click on START to Start the Game"
+
+[node name="SpawnPosition" type="Node2D" parent="."]
+position = Vector2(942, 391)
+
+[node name="Submarine" parent="." instance=ExtResource("3_mhad8")]
+position = Vector2(382, 804)
+script = null
+
+[node name="Submarine2" parent="." instance=ExtResource("3_mhad8")]
+position = Vector2(1538, 801)
+script = null
+
+[node name="Enemy" parent="." instance=ExtResource("5_wn4pu")]
+position = Vector2(928, 212)
+
+[node name="Platform3" parent="." instance=ExtResource("7_csji5")]
+position = Vector2(4.00006, 547)
+rotation = 1.57079
+
+[node name="Platform4" parent="." instance=ExtResource("7_csji5")]
+position = Vector2(1913, 547)
+rotation = -1.57079
+
+[node name="Platform5" parent="." instance=ExtResource("8_2nuho")]
+position = Vector2(935, 614)
+scale = Vector2(0.312593, 0.312593)
+
+[node name="Platform6" parent="." instance=ExtResource("7_csji5")]
+position = Vector2(262, 1130)
+
+[node name="Platform7" parent="." instance=ExtResource("7_csji5")]
+position = Vector2(998, 1134)
+
+[node name="Platform8" parent="." instance=ExtResource("7_csji5")]
+position = Vector2(1739, 1135)
+
+[node name="OxygenStock" parent="." instance=ExtResource("4_gg8yl")]
+position = Vector2(939, 1093)
+
+[node name="Sprite2D" parent="." instance=ExtResource("2_yrhn7")]
