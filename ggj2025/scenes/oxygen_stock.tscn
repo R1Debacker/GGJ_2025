@@ -64,10 +64,10 @@ position = Vector2(0, -78.95)
 
 [node name="TextureProgressBar" parent="." instance=ExtResource("3_dox3i")]
 use_parent_material = false
-offset_left = -166.0
-offset_top = 0.0
-offset_right = -134.0
-offset_bottom = 8.0
+offset_left = -128.0
+offset_top = -8.0
+offset_right = -96.0
+offset_bottom = 4.76837e-07
 rotation = -1.5708
 scale = Vector2(5, 5)
 value = 0.0

@@ -1,13 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://oxjd4j8n6ifb"]
+[gd_scene load_steps=9 format=3 uid="uid://oxjd4j8n6ifb"]
 
 [ext_resource type="PackedScene" uid="uid://y3degk013o8y" path="res://scenes/map.tscn" id="1_205tb"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_rdk0u"]
 [ext_resource type="PackedScene" uid="uid://b3em41xciomo0" path="res://scenes/oxygen_stock.tscn" id="3_5pqyt"]
 [ext_resource type="PackedScene" uid="uid://bjinpqjoklw6o" path="res://scenes/water_shader.tscn" id="5_o14ac"]
-[ext_resource type="PackedScene" uid="uid://bpj5rq6vpryhv" path="res://scenes/follow_fish.tscn" id="6_2xlaj"]
 [ext_resource type="FontFile" uid="uid://b8i5ovcrke3e" path="res://HugoLeBo/UI_Menus/PlayfulTime-BLBB8.ttf" id="6_hu4rw"]
+[ext_resource type="PackedScene" uid="uid://dao6o5euadnep" path="res://scenes/dart_fish.tscn" id="7_bpcmu"]
 [ext_resource type="PackedScene" uid="uid://4qiggnmy0p87" path="res://scenes/big_fish.tscn" id="7_uxlgq"]
-[ext_resource type="PackedScene" uid="uid://4qiggnmy0p87" path="res://scenes/big_fish.tscn" id="7_uxlgq"]
+[ext_resource type="PackedScene" uid="uid://bpj5rq6vpryhv" path="res://scenes/follow_fish.tscn" id="8_i4vc4"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_rdk0u")
@@ -16,10 +16,7 @@ script = ExtResource("1_rdk0u")
 metadata/_edit_lock_ = true
 
 [node name="OxygenStock" parent="." instance=ExtResource("3_5pqyt")]
-position = Vector2(247, 784)
-
-[node name="BigFish" parent="." instance=ExtResource("7_uxlgq")]
-position = Vector2(1030, 366)
+position = Vector2(193, 892)
 
 [node name="StartSubmarineSpawn" type="Marker2D" parent="."]
 position = Vector2(1687, 102)
@@ -46,5 +43,15 @@ text = "5"
 
 [node name="Sprite2D" parent="." instance=ExtResource("5_o14ac")]
 metadata/_edit_lock_ = true
+
+[node name="BigFish" parent="." instance=ExtResource("7_uxlgq")]
+position = Vector2(712, 500)
+
+[node name="DartFish" parent="." instance=ExtResource("7_bpcmu")]
+position = Vector2(1141, 868)
+metadata/_edit_lock_ = true
+
+[node name="FollowFish" parent="." instance=ExtResource("8_i4vc4")]
+position = Vector2(767, 273)
 
 [connection signal="timeout" from="Label/Timer" to="." method="_on_timer_timeout"]

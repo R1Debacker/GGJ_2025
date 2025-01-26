@@ -47,6 +47,5 @@ bus = &"Ellie"
 
 [node name="beep" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_iced5")
-bus = &"beep"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

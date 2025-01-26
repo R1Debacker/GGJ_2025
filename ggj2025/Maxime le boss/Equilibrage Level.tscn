@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ba2okpisywb3c"]
+[gd_scene load_steps=8 format=3 uid="uid://bx1h3ge766xws"]
 
 [ext_resource type="PackedScene" uid="uid://y3degk013o8y" path="res://scenes/map.tscn" id="1_te0hc"]
 [ext_resource type="PackedScene" uid="uid://b3em41xciomo0" path="res://scenes/oxygen_stock.tscn" id="2_p3u31"]
@@ -6,8 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://4qiggnmy0p87" path="res://scenes/big_fish.tscn" id="4_h1v41"]
 [ext_resource type="PackedScene" uid="uid://dao6o5euadnep" path="res://scenes/dart_fish.tscn" id="5_es3rh"]
 [ext_resource type="PackedScene" uid="uid://bjinpqjoklw6o" path="res://scenes/water_shader.tscn" id="6_0tunr"]
-[ext_resource type="PackedScene" uid="uid://dyn8uwh07g3p8" path="res://scenes/submarine.tscn" id="7_g7gix"]
-[ext_resource type="PackedScene" uid="uid://dcjrfeay866pw" path="res://scenes/player.tscn" id="8_26toi"]
+[ext_resource type="FontFile" uid="uid://b8i5ovcrke3e" path="res://HugoLeBo/UI_Menus/PlayfulTime-BLBB8.ttf" id="9_6372t"]
 
 [node name="EquilibrageLevel" type="Node2D"]
 metadata/_edit_lock_ = true
@@ -29,12 +28,28 @@ metadata/_edit_lock_ = true
 [node name="Sprite2D" parent="." instance=ExtResource("6_0tunr")]
 metadata/_edit_lock_ = true
 
-[node name="Submarine" parent="." instance=ExtResource("7_g7gix")]
-position = Vector2(1682, 187)
-scale = Vector2(-2, 2)
-
-[node name="Player" parent="." instance=ExtResource("8_26toi")]
-position = Vector2(1682, 184)
-
 [node name="FollowFish" parent="." instance=ExtResource("3_uxben")]
 position = Vector2(767, 273)
+
+[node name="StartSubmarineSpawn" type="Marker2D" parent="."]
+position = Vector2(1687, 102)
+gizmo_extents = 80.0
+
+[node name="EndSubmarineSpawn" type="Marker2D" parent="."]
+position = Vector2(1727, 921)
+gizmo_extents = 80.0
+
+[node name="SubmarineContainer" type="Node2D" parent="."]
+
+[node name="PlayersContainer" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 816.0
+offset_top = 226.0
+offset_right = 1030.0
+offset_bottom = 859.0
+theme_override_fonts/font = ExtResource("9_6372t")
+theme_override_font_sizes/font_size = 500
+text = "5"
+
+[node name="Timer" type="Timer" parent="Label"]

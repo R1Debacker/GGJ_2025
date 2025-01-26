@@ -80,7 +80,7 @@ modulate = Color(0.975542, 0.989181, 0.901458, 1)
 scale = Vector2(2, 2)
 script = ExtResource("1_uexf5")
 filling_speed = 8.0
-target_oxygen_level = 10.0
+target_oxygen_level = 100.0
 
 [node name="Localposition" type="Node2D" parent="."]
 
