@@ -44,6 +44,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _victory():
 	victory = true
 	animation_player.play("victory")
+	Game.back_sound.stop()
+	Game.we_did_it.play()
 
 func _find_shrimp_in_area():
 	if $Localposition/VictoryPosition/Sprite2D/Area2D.has_overlapping_bodies():

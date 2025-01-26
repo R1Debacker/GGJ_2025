@@ -51,5 +51,6 @@ func _on_timer_timeout() -> void:
 		for player in players_container.get_children():
 			player.player.active = true
 		self.timer.stop()
+		Game.okaaaaay_letsgo.play()
 	else:
 		Game.beep.play()

@@ -34,6 +34,7 @@ func _ready() -> void:
 	self.player_sprite.modulate = self.color
 
 func _process(delta: float) -> void:
+		
 	if not active:
 		return
 	if has_bubble:
