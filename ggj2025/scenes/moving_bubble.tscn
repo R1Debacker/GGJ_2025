@@ -16,5 +16,10 @@ autostart = true
 [node name="ChangeDirectionTimer" type="Timer" parent="." index="3"]
 autostart = true
 
+[node name="InvivibilityTimer" type="Timer" parent="." index="4"]
+wait_time = 0.1
+autostart = true
+
 [connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]
 [connection signal="timeout" from="ChangeDirectionTimer" to="." method="_on_change_direction_timer_timeout"]
+[connection signal="timeout" from="InvivibilityTimer" to="." method="_on_invivibility_timer_timeout"]

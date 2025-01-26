@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjinpqjoklw6o"]
 
-[ext_resource type="Shader" path="res://Erwann le carry/water_shader.gdshader" id="1_6bl7r"]
+[ext_resource type="Shader" path="res://assets/water_shader.gdshader" id="1_6bl7r"]
 [ext_resource type="Texture2D" uid="uid://6l2bxpan17n4" path="res://assets/sprites/icon.svg" id="2_7yqtf"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_amixi"]
@@ -23,6 +23,7 @@ shader_parameter/wave_strength = 2.0
 shader_parameter/fast_noise = SubResource("NoiseTexture2D_sy04e")
 
 [node name="Sprite2D" type="Sprite2D"]
+z_index = 10
 material = SubResource("ShaderMaterial_5o2si")
 position = Vector2(980, 532)
 scale = Vector2(16.125, 9.26563)

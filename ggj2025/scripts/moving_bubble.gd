@@ -8,6 +8,7 @@ var x_dir_factor = 1.0
 
 func _ready() -> void:
 	moving_active = true
+	invicibility = true
 	life_timer.wait_time = randf_range(10.0, 15.0)
 
 func _physics_process(delta: float) -> void:
@@ -21,3 +22,7 @@ func _on_life_timer_timeout() -> void:
 func _on_change_direction_timer_timeout() -> void:
 	change_direction_timer.wait_time = randf_range(1.0, 3.0)
 	x_dir_factor *= -1
+
+
+func _on_invivibility_timer_timeout() -> void:
+	invicibility = false

@@ -1,7 +1,24 @@
-[gd_scene load_steps=12 format=3 uid="uid://4qiggnmy0p87"]
+[gd_scene load_steps=17 format=3 uid="uid://4qiggnmy0p87"]
 
 [ext_resource type="Script" path="res://scripts/big_fish.gd" id="1_wlt4k"]
+[ext_resource type="Texture2D" uid="uid://b5l001avb8kjm" path="res://assets/sprites/globe_fish.png" id="2_f4pb5"]
 [ext_resource type="Texture2D" uid="uid://bnb42u2fgk0dx" path="res://assets/sprites/underwater-diving-files/PNG/enemies/fish-big.png" id="2_tfjl6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhgpj"]
+atlas = ExtResource("2_f4pb5")
+region = Rect2(0, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vgpd"]
+atlas = ExtResource("2_f4pb5")
+region = Rect2(60, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ids1g"]
+atlas = ExtResource("2_f4pb5")
+region = Rect2(120, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbpn1"]
+atlas = ExtResource("2_f4pb5")
+region = Rect2(180, 0, 60, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lqkgf"]
 atlas = ExtResource("2_tfjl6")
@@ -23,6 +40,23 @@ region = Rect2(162, 0, 54, 49)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_qhgpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vgpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ids1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbpn1")
+}],
+"loop": false,
+"name": &"Globe",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_lqkgf")
 }, {
 "duration": 1.0,
@@ -40,7 +74,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j5k8w"]
-radius = 25.1794
+radius = 14.0357
 
 [sub_resource type="Animation" id="Animation_73mno"]
 length = 0.001
@@ -83,15 +117,12 @@ _data = {
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_wlt4k")
-speed = null
 damage_amount = 1.0
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wrvtf")
 animation = &"Idle"
-frame = 2
-frame_progress = 0.744288
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -111,5 +142,6 @@ autostart = true
 wait_time = 4.0
 autostart = true
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="ScaleUpTimer" to="." method="_on_scale_up_timer_timeout"]
 [connection signal="timeout" from="ChangeDirectionTimer" to="." method="_on_change_direction_timer_timeout"]

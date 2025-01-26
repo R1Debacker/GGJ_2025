@@ -1,13 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjtf3rftw3r2f"]
+[gd_scene load_steps=7 format=3 uid="uid://cjtf3rftw3r2f"]
 
 [ext_resource type="PackedScene" uid="uid://y3degk013o8y" path="res://scenes/map.tscn" id="1_vc81k"]
 [ext_resource type="PackedScene" uid="uid://b3em41xciomo0" path="res://scenes/oxygen_stock.tscn" id="2_c1llh"]
 [ext_resource type="PackedScene" uid="uid://dcjrfeay866pw" path="res://scenes/player.tscn" id="4_6hwi3"]
 [ext_resource type="PackedScene" uid="uid://dyn8uwh07g3p8" path="res://scenes/submarine.tscn" id="4_h3427"]
 [ext_resource type="PackedScene" uid="uid://bjinpqjoklw6o" path="res://scenes/water_shader.tscn" id="5_w7s64"]
-[ext_resource type="PackedScene" uid="uid://bpj5rq6vpryhv" path="res://scenes/follow_fish.tscn" id="6_kgl1f"]
 [ext_resource type="PackedScene" uid="uid://4qiggnmy0p87" path="res://scenes/big_fish.tscn" id="7_rye87"]
-[ext_resource type="PackedScene" uid="uid://dao6o5euadnep" path="res://scenes/dart_fish.tscn" id="8_oy50o"]
 
 [node name="TestErwann" type="Node2D"]
 
@@ -18,12 +16,14 @@ metadata/_edit_lock_ = true
 position = Vector2(1711, 431)
 
 [node name="OxygenStock" parent="." instance=ExtResource("2_c1llh")]
-position = Vector2(247, 784)
+position = Vector2(284, 777)
 
 [node name="Player" parent="." instance=ExtResource("4_6hwi3")]
 position = Vector2(627, 736)
+script = null
 
 [node name="Bubble" parent="Player" index="0"]
+collision_layer = 0
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" parent="Player/Bubble" index="0"]
@@ -41,18 +41,10 @@ metadata/_edit_lock_ = true
 [node name="DampedSpringJoint2D" parent="Player" index="2"]
 metadata/_edit_lock_ = true
 
-[node name="Enemy" parent="." instance=ExtResource("6_kgl1f")]
-position = Vector2(518, 200)
-
-[node name="BigFish" parent="." instance=ExtResource("7_rye87")]
-position = Vector2(803, 901)
-damage_amount = 50.0
-
 [node name="Sprite2D" parent="." instance=ExtResource("5_w7s64")]
 metadata/_edit_lock_ = true
 
-[node name="DartFish" parent="." instance=ExtResource("8_oy50o")]
-position = Vector2(1144, 263)
-metadata/_edit_lock_ = true
+[node name="BigFish" parent="." instance=ExtResource("7_rye87")]
+position = Vector2(798, 879)
 
 [editable path="Player"]

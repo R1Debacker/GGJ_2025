@@ -46,7 +46,9 @@ script = ExtResource("1_tx5h2")
 initial_stock = 500.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -140.7)
+z_index = 1
+position = Vector2(0, -85.7)
+scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_d7lyr")
 animation = &"Idle"
 
@@ -54,15 +56,17 @@ animation = &"Idle"
 autostart = true
 
 [node name="SpawnPosition" type="Node2D" parent="."]
-position = Vector2(0, -114.95)
+position = Vector2(0, -78.95)
 
 [node name="TextureProgressBar" parent="." instance=ExtResource("3_dox3i")]
+use_parent_material = false
 offset_left = -166.0
 offset_top = 0.0
 offset_right = -134.0
 offset_bottom = 8.0
 rotation = -1.5708
 scale = Vector2(5, 5)
+value = 0.0
 script = null
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

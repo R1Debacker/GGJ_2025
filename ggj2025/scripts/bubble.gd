@@ -11,13 +11,14 @@ var air_volume : float
 var air_factor = sqrt(AIR_VOLUME_SCALE / PI)
 
 var moving_active : bool = false
+var invicibility := false
 
 func _ready() -> void:
 	set_volume(AIR_VOLUME_SCALE)
 
 func _on_body_entered(body: Node) -> void:
 	if body.has_method("collect"):
-		if self == body.bubble:
+		if self == body.bubble or invicibility:
 			return
 		body.collect(self)
 
@@ -26,13 +27,13 @@ func _burst_bubble():
 	animated_sprite_2d.play('Burst')
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
-	
 	queue_free()
 
 func set_volume(new_vol : float):
 	if new_vol < 1e-2:
 		if animated_sprite_2d != null:
 			_burst_bubble()
+			return
 	bubble_scale = sqrt(new_vol / PI)
 	self.scale = Vector2(bubble_scale / air_factor , bubble_scale / air_factor)
 	self.air_volume = new_vol
@@ -56,5 +57,4 @@ static func spawn_bubble(parent: Node2D, position: Vector2, bubble_vol: float, m
 	current_bubble.position = position
 	current_bubble.set_volume(bubble_vol)
 	parent.add_child(current_bubble)
-	parent.move_child(current_bubble, 0)
 	return current_bubble

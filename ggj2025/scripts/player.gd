@@ -76,6 +76,8 @@ func dash_logic():
 		self.timestamp_last_use_dash = Time.get_ticks_msec()
 		var dash_dir = (self.global_position - bubble.global_position).normalized()
 		_velocity += dash_dir * dash_speed
+		if has_bubble && bubble.air_volume > 0:
+			_velocity *= min(bubble.air_volume * 0.1, 1)
 		bubble.split()
 	return _velocity
 
@@ -88,8 +90,11 @@ func _physics_process(delta: float) -> void:
 	
 	_velocity += player_speed * Vector2(Input.get_joy_axis(self.device_idx, JOY_AXIS_LEFT_X), Input.get_joy_axis(self.device_idx, JOY_AXIS_LEFT_Y))
 	_velocity += env_velocity
+	if has_bubble && bubble.air_volume > 0:
+		_velocity *= min(1/(bubble.air_volume*0.08), 1.0)
 	velocity += _velocity * delta
 	velocity *= drag_resistance
+		
 	
 	env_velocity = Vector2(0,0)
 	move_and_slide()
@@ -97,7 +102,7 @@ func _physics_process(delta: float) -> void:
 func collect(hit_bubble: Bubble):
 	if has_bubble:
 		self.bubble.add_volume(hit_bubble.air_volume)
-		hit_bubble._burst_bubble()
+		hit_bubble.queue_free()
 	else:
 		hit_bubble.moving_active = false
 		hit_bubble.get_parent().remove_child(hit_bubble)
