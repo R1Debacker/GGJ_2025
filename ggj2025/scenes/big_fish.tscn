@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://4qiggnmy0p87"]
+[gd_scene load_steps=12 format=3 uid="uid://jio7nqmxw5ql"]
 
 [ext_resource type="Script" path="res://scripts/big_fish.gd" id="1_wlt4k"]
 [ext_resource type="Texture2D" uid="uid://bnb42u2fgk0dx" path="res://assets/sprites/underwater-diving-files/PNG/enemies/fish-big.png" id="2_tfjl6"]
@@ -80,7 +80,7 @@ _data = {
 }
 
 [node name="BigFish" type="Area2D"]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_wlt4k")
 speed = null

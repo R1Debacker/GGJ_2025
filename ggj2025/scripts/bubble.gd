@@ -22,6 +22,11 @@ func _on_body_entered(body: Node) -> void:
 		body.collect(self)
 
 func _burst_bubble():
+	self.air_volume=0
+	animated_sprite_2d.play('Burst')
+	
+func _on_animated_sprite_2d_animation_finished() -> void:
+	
 	queue_free()
 
 func set_volume(new_vol : float):
