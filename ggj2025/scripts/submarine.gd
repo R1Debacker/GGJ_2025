@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 		# Interpolate between the positions
 		position = lerp(start_position, end_position,  t * t * (3.0 - 2.0 * t))
 	
-	if current_shrimp != null && current_shrimp.has_bubble && current_shrimp.bubble.air_volume > 0.0:
+	if current_shrimp != null && current_shrimp.device_idx == player_index && current_shrimp.has_bubble && current_shrimp.bubble.air_volume > 0.0:
 		if audio_stream_player_2d.is_playing() == false:
 				audio_stream_player_2d.play()
 		var oxygen_value := filling_speed * delta
@@ -73,6 +73,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _victory():
 	victory = true
 	animation_player.play("victory")
+	Game.back_sound.stop()
+	Game.we_did_it.play()
 
 func _find_shrimp_in_area():
 	if $Localposition/VictoryPosition/Sprite2D/Area2D.has_overlapping_bodies():

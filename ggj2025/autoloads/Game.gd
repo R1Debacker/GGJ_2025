@@ -9,6 +9,9 @@ extends Node
 @onready var bubble_pop_petites: AudioStreamPlayer2D = $"Bubble pop petites"
 @onready var sylvain: AudioStreamPlayer2D = $Sylvain
 @onready var beep: AudioStreamPlayer2D = $beep
+@onready var okaaaaay_letsgo: AudioStreamPlayer2D = $OkaaaaayLetsgo
+@onready var souffrir_ok: AudioStreamPlayer2D = $SouffrirOk
+@onready var we_did_it: AudioStreamPlayer2D = $WeDidIt
 
 const BUBBLE = preload("res://scenes/bubble.tscn")
 const MOVING_BUBBLE = preload("res://scenes/moving_bubble.tscn")
@@ -30,6 +33,7 @@ var avail_colors := [
 ]
 
 var players : Array = []
+var submarines : Array[Submarine] = []
 var players_idx : Array = []
 var players_color : Array = []
 var nb_players : int :
@@ -46,4 +50,8 @@ func _on_timer_timeout() -> void:
 	elif turn ==1 :
 		sylvain.play()
 		turn = 0
-	pass # Replace with function body.
+
+
+func _on_we_did_it_finished() -> void:
+	get_tree().change_scene_to_file("res://scenes/lobby.tscn")
+	back_sound.play()

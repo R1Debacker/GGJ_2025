@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://buac86mfls7xx"]
+[gd_scene load_steps=12 format=3 uid="uid://buac86mfls7xx"]
 
 [ext_resource type="Script" path="res://autoloads/Game.gd" id="1_06ibk"]
 [ext_resource type="AudioStream" uid="uid://ctx0djew58i1k" path="res://HugoLeBo/UI_Menus/bubbles_A#_major.wav" id="2_bl4pm"]
@@ -8,6 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://bhp28sv47k2by" path="res://assets/sprites/SFX/Bubble Pop 1.mp3" id="4_aspm5"]
 [ext_resource type="AudioStream" uid="uid://b2uy71ksjr3yl" path="res://assets/sprites/SFX/Sylvain.mp3" id="7_0nghx"]
 [ext_resource type="AudioStream" uid="uid://d3xys1ja4fhlb" path="res://assets/sprites/SFX/short-beep-tone-47916.mp3" id="8_iced5"]
+[ext_resource type="AudioStream" uid="uid://bab2kgx7mu80r" path="res://assets/sprites/SFX/OkaaaaaaaayLetsGo.mp3" id="9_wsbcl"]
+[ext_resource type="AudioStream" uid="uid://jx7uixgghnpr" path="res://assets/sprites/SFX/SouffirOkee.mp3" id="10_2o6t4"]
+[ext_resource type="AudioStream" uid="uid://bkldjo7h6s8ps" path="res://assets/sprites/SFX/WeDidItYEAH.mp3" id="11_8tf0w"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_06ibk")
@@ -48,4 +51,18 @@ bus = &"Ellie"
 [node name="beep" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_iced5")
 
+[node name="OkaaaaayLetsgo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_wsbcl")
+volume_db = 15.0
+bus = &"LetsGOO"
+
+[node name="SouffrirOk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_2o6t4")
+volume_db = 5.0
+bus = &"Ellie"
+
+[node name="WeDidIt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_8tf0w")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="WeDidIt" to="." method="_on_we_did_it_finished"]

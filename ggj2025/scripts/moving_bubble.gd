@@ -5,6 +5,8 @@ extends Bubble
 var x_dir_factor = 1.0
 @onready var life_timer: Timer = $"LifeTimer"
 @onready var change_direction_timer: Timer = $"ChangeDirectionTimer"
+@onready var invivibility_timer: Timer = $InvivibilityTimer
+
 
 func _ready() -> void:
 	moving_active = true

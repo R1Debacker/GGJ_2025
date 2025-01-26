@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bst61aw4bg8w3"]
+[gd_scene load_steps=10 format=3 uid="uid://bst61aw4bg8w3"]
 
 [ext_resource type="Script" path="res://scripts/parameters.gd" id="1_fr5m5"]
 [ext_resource type="Texture2D" uid="uid://x7538hbs0j42" path="res://HugoLeBo/UI_Menus/main_menu.png" id="2_5dabr"]
 [ext_resource type="Script" path="res://scripts/start_button.gd" id="3_65p1c"]
 [ext_resource type="PackedScene" uid="uid://bjinpqjoklw6o" path="res://scenes/water_shader.tscn" id="4_tu0uq"]
+[ext_resource type="Texture2D" uid="uid://dkq6i8vypjvx7" path="res://assets/sprites/howtoplay2.png" id="5_yoa6o"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8yhja"]
 texture = ExtResource("2_5dabr")
@@ -59,22 +60,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_8yhja")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -212.5
-offset_top = -127.0
-offset_right = 212.5
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 100
-text = "SKILL IS THE ONLY PARAMETER"
-
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -97,6 +82,10 @@ text = "Back"
 script = ExtResource("3_65p1c")
 
 [node name="Sprite2D" parent="." instance=ExtResource("4_tu0uq")]
-position = Vector2(10, -50)
+position = Vector2(-27, -39)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("5_yoa6o")
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
