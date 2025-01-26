@@ -5,6 +5,7 @@ var current_stock := 0.0
 @onready var bubbles_spawn_position: Node2D = $SpawnPosition
 @onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+var stock_empty := false
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("Idle")
@@ -22,3 +23,12 @@ func _spawn_bubble(position):
 		audio_stream_player_2d.play()
 		current_stock -= bubble_vol
 		texture_progress_bar.value = (current_stock*1.0)/(initial_stock*1.0)
+	elif !stock_empty:
+		stock_empty = true
+		var winner : Submarine = null
+		for submarine in Game.submarines:
+			if winner == null:
+				winner = submarine
+			elif submarine.current_oxygen_level > winner.current_oxygen_level:
+				winner = submarine
+		if winner != null: winner._victory()

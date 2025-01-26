@@ -33,6 +33,7 @@ var avail_colors := [
 ]
 
 var players : Array = []
+var submarines : Array[Submarine] = []
 var players_idx : Array = []
 var players_color : Array = []
 var nb_players : int :

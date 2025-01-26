@@ -105,7 +105,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ge4tq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_mr4ol")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_qeaj2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5oiw7")
-text = "Parameters"
+text = "Controls"
 
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
