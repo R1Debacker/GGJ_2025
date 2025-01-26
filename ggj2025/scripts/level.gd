@@ -21,9 +21,9 @@ func init_level():
 	for i in rng:
 		var player_color = Game.players_color[i]
 		var player_idx = Game.players_idx[i]
-		var t = 0
+		var t : float = 0.0
 		if Game.nb_players >= 2:
-			t = (j/(Game.nb_players-1))
+			t = (float(j)/(Game.nb_players-1))
 		
 		var submarine_position = (1-t)*start_submarine_spawn.global_position + t*end_submarine_spawn.global_position
 		
@@ -48,7 +48,7 @@ func init_level():
 		submarine.end_position = end_submarine_spawn.global_position
 		submarine.t = t
 		
-		j+= 1
+		j += 1
 	
 	self.timer.start()
 	Game.beep.play()
