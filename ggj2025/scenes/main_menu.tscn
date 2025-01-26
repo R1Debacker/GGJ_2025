@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfvfs2jhc66ra"]
+[gd_scene load_steps=13 format=3 uid="uid://cfvfs2jhc66ra"]
 
-[ext_resource type="Script" path="res://HugoLeBo/UI_Menus/main_menu.gd" id="1_o3vmd"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_o3vmd"]
 [ext_resource type="Texture2D" uid="uid://x7538hbs0j42" path="res://HugoLeBo/UI_Menus/main_menu.png" id="1_oe0lj"]
 [ext_resource type="FontFile" uid="uid://b8i5ovcrke3e" path="res://HugoLeBo/UI_Menus/PlayfulTime-BLBB8.ttf" id="2_o5ow0"]
+[ext_resource type="Script" path="res://scripts/start_button.gd" id="3_yuq8v"]
 [ext_resource type="PackedScene" uid="uid://bjinpqjoklw6o" path="res://scenes/water_shader.tscn" id="5_60bjs"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8yhja"]
@@ -34,6 +35,11 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_size = 2
+
+[sub_resource type="InputEventKey" id="InputEventKey_f4ih6"]
+
+[sub_resource type="Shortcut" id="Shortcut_ibeux"]
+events = [SubResource("InputEventKey_f4ih6")]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -85,7 +91,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ge4tq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_mr4ol")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_qeaj2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5oiw7")
+action_mode = 0
+shortcut = SubResource("Shortcut_ibeux")
 text = "Let's Shrimp !"
+script = ExtResource("3_yuq8v")
 
 [node name="ParametersButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2

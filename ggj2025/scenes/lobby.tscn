@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://c0ksac4r53m4k"]
 
 [ext_resource type="Script" path="res://scripts/lobby.gd" id="1_vc4d4"]
-[ext_resource type="PackedScene" uid="uid://breeky17d2slx" path="res://scenes/water_shader.tscn" id="2_yrhn7"]
+[ext_resource type="PackedScene" uid="uid://bjinpqjoklw6o" path="res://scenes/water_shader.tscn" id="2_yrhn7"]
 [ext_resource type="PackedScene" uid="uid://dyn8uwh07g3p8" path="res://scenes/submarine.tscn" id="3_mhad8"]
 [ext_resource type="PackedScene" uid="uid://b3em41xciomo0" path="res://scenes/oxygen_stock.tscn" id="4_gg8yl"]
-[ext_resource type="PackedScene" uid="uid://bpj5rq6vpryhv" path="res://scenes/enemy.tscn" id="5_wn4pu"]
+[ext_resource type="PackedScene" uid="uid://bpj5rq6vpryhv" path="res://scenes/follow_fish.tscn" id="5_wn4pu"]
 [ext_resource type="PackedScene" uid="uid://b735q8edfkty1" path="res://scenes/platform_flat_long.tscn" id="7_csji5"]
 [ext_resource type="PackedScene" uid="uid://dv1vi6hjdllgj" path="res://scenes/platform_oval.tscn" id="8_2nuho"]
 

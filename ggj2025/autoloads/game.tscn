@@ -14,6 +14,7 @@ script = ExtResource("1_06ibk")
 
 [node name="menu_button_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_bl4pm")
+bus = &"buttonclick"
 
 [node name="BackSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_welhq")
@@ -31,8 +32,9 @@ bus = &"Ellie"
 [node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_nlste")
 autoplay = true
+bus = &"MenuMusic"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 60.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
