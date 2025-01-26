@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://sdoua8lc2p27" path="res://assets/sprites/Mossy Tileset/rounded_platform.png" id="9_vj3dm"]
 [ext_resource type="PackedScene" uid="uid://dv6xmwuff2qfq" path="res://scenes/u_pine.tscn" id="12_ue1wa"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gvxk0"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ca5hy"]
 texture = ExtResource("1_3og73")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -33,7 +33,7 @@ texture_region_size = Vector2i(64, 64)
 2:3/0 = 0
 3:3/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rf26m"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_35qi2"]
 texture = ExtResource("2_gm7mi")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -141,8 +141,8 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSet" id="TileSet_ehqfv"]
 tile_size = Vector2i(64, 64)
-sources/1 = SubResource("TileSetAtlasSource_gvxk0")
-sources/2 = SubResource("TileSetAtlasSource_rf26m")
+sources/1 = SubResource("TileSetAtlasSource_ca5hy")
+sources/2 = SubResource("TileSetAtlasSource_35qi2")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fbcf7"]
 texture = ExtResource("1_5n0gs")

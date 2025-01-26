@@ -28,7 +28,7 @@ var active : bool = true
 
 var has_bubble : bool :
 	get:
-		return bubble != null
+		return self.bubble != null
 
 func _ready() -> void:
 	self.player_sprite.modulate = self.color
@@ -77,7 +77,7 @@ func dash_logic():
 		var dash_dir = (self.global_position - bubble.global_position).normalized()
 		_velocity += dash_dir * dash_speed
 		if has_bubble && bubble.air_volume > 0:
-			_velocity *= min(bubble.air_volume * 0.1, 1)
+			_velocity *= max(bubble.air_volume * 0.1, 1)
 		bubble.split()
 	return _velocity
 
@@ -94,18 +94,15 @@ func _physics_process(delta: float) -> void:
 		_velocity *= min(1/(bubble.air_volume*0.08), 1.0)
 	velocity += _velocity * delta
 	velocity *= drag_resistance
-		
 	
 	env_velocity = Vector2(0,0)
 	move_and_slide()
 
 func collect(hit_bubble: Bubble):
+	hit_bubble.remove_owner()
 	if has_bubble:
 		self.bubble.add_volume(hit_bubble.air_volume)
+		hit_bubble.air_volume = 0.0
 		hit_bubble.queue_free()
 	else:
-		hit_bubble.moving_active = false
-		hit_bubble.get_parent().remove_child(hit_bubble)
-		bubble_parent.add_child(hit_bubble)
-		hit_bubble.position = Vector2(0,0)
-		self.bubble = hit_bubble
+		hit_bubble.switch_owner(self)

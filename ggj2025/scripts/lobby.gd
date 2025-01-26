@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 		if Input.is_joy_button_pressed(device_idx, JOY_BUTTON_A):
 			Game.players_idx.append(device_idx)
 			var player = Game.PLAYER.instantiate()
-			Game.add_child(player)
+			add_child(player)
 			player.global_position = spawn_position.global_position
 			player.player.device_idx = device_idx
 			player.player.color = Game.avail_colors.pop_front()

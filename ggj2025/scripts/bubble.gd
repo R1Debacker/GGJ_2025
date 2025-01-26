@@ -2,6 +2,7 @@ extends Area2D
 class_name Bubble
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 const SPLIT_KEEP_PERCENT = 0.7
 
@@ -9,12 +10,31 @@ var bubble_scale : float = 1
 var AIR_VOLUME_SCALE : float = 1
 var air_volume : float
 var air_factor = sqrt(AIR_VOLUME_SCALE / PI)
+var player_owner : Player = null
+var has_owner : bool :
+	get:
+		return self.player_owner != null
 
 var moving_active : bool = false
 var invicibility := false
 
 func _ready() -> void:
 	set_volume(AIR_VOLUME_SCALE)
+
+func remove_owner():
+	if has_owner:
+		self.player_owner.bubble = null
+		self.player_owner.bubble_parent.call_deferred("remove_child", self)
+	else:
+		self.get_parent().call_deferred("remove_child", self)
+	self.player_owner = null
+
+func switch_owner(new_owner):
+	self.moving_active = false
+	new_owner.bubble_parent.call_deferred("add_child", self)
+	self.position = Vector2(0,0)
+	self.player_owner = new_owner
+	new_owner.bubble = self
 
 func _on_body_entered(body: Node) -> void:
 	if body.has_method("collect"):
@@ -24,6 +44,8 @@ func _on_body_entered(body: Node) -> void:
 
 func _burst_bubble():
 	self.air_volume=0
+	collision_shape_2d.disabled = true
+	invicibility = true
 	animated_sprite_2d.play('Burst')
 	
 func _on_animated_sprite_2d_animation_finished() -> void:

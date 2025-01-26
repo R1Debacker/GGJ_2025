@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://doylg1ro76pdc"]
+
+[ext_resource type="FontFile" uid="uid://b8i5ovcrke3e" path="res://HugoLeBo/UI_Menus/PlayfulTime-BLBB8.ttf" id="1_n1ubg"]
+
+[node name="EndCanvas" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 261.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_n1ubg")
+theme_override_font_sizes/font_size = 96
+text = "Fin de partie"
+horizontal_alignment = 1
+vertical_alignment = 1
