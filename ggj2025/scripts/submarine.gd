@@ -6,7 +6,6 @@ class_name Submarine
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-var player_index := 0
 var current_oxygen_level := 0.0
 var current_shrimp : CharacterBody2D = null
 var victory := false
@@ -20,7 +19,8 @@ var use_lerp : bool :
 var direction = 1
 @export var speed : float = 0.04
 var disable := false
-var r = randf_range(0.9,1.1)
+var r : float = randf_range(0.9,1.1)
+@export var distance_to_fill : float = 60.0
 
 func _ready() -> void:
 	if use_lerp:
@@ -29,7 +29,9 @@ func _ready() -> void:
 		animation_player.stop()
 	
 func _process(delta: float) -> void:
-	if use_lerp and not disable:
+	if self.disable:
+		return
+	if use_lerp:
 		# Update the interpolation factor
 		t += direction * speed * delta * r
 
@@ -44,7 +46,8 @@ func _process(delta: float) -> void:
 		# Interpolate between the positions
 		position = lerp(start_position, end_position,  t * t * (3.0 - 2.0 * t))
 	
-	if current_shrimp != null && current_shrimp.device_idx == player_index && current_shrimp.has_bubble && current_shrimp.bubble.air_volume > 0.0:
+	var dist_to_shrimp : float = (self.global_position - self.current_shrimp.global_position).length()
+	if current_shrimp != null && dist_to_shrimp <= distance_to_fill && current_shrimp.has_bubble && current_shrimp.bubble.air_volume > 0.0:
 		if audio_stream_player_2d.is_playing() == false:
 				audio_stream_player_2d.play()
 		var oxygen_value := filling_speed * delta
@@ -61,24 +64,8 @@ func _process(delta: float) -> void:
 		audio_stream_player_2d.stop()
 	texture_progress_bar.value= (current_oxygen_level*1.0)/(target_oxygen_level*1.0)
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is Player && current_shrimp == null:
-		current_shrimp = body
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body is CharacterBody2D && body == current_shrimp: 
-		current_shrimp = null
-		_find_shrimp_in_area()
-
 func _victory():
 	victory = true
 	animation_player.play("victory")
 	Game.back_sound.stop()
 	Game.we_did_it.play()
-
-func _find_shrimp_in_area():
-	if $Localposition/VictoryPosition/Sprite2D/Area2D.has_overlapping_bodies():
-		for body in $Localposition/VictoryPosition/Sprite2D/Area2D.get_overlapping_bodies():
-			if body is CharacterBody2D:
-				current_shrimp = body
-				return
