@@ -50,4 +50,8 @@ func _on_timer_timeout() -> void:
 	elif turn ==1 :
 		sylvain.play()
 		turn = 0
-	pass # Replace with function body.
+
+
+func _on_we_did_it_finished() -> void:
+	get_tree().change_scene_to_file("res://scenes/lobby.tscn")
+	back_sound.play()

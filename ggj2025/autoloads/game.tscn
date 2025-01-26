@@ -65,3 +65,4 @@ bus = &"Ellie"
 stream = ExtResource("11_8tf0w")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="WeDidIt" to="." method="_on_we_did_it_finished"]
