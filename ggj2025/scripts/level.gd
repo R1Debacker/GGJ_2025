@@ -44,8 +44,8 @@ func init_level():
 		submarine.get_node("Localposition/VictoryPosition/Sprite2D").self_modulate = player.player.color
 		Game.submarines.append(submarine)
 		submarine.current_shrimp = player.player
-		submarine.start_position = start_submarine_spawn.global_position
-		submarine.end_position = end_submarine_spawn.global_position
+		submarine.start_node = start_submarine_spawn
+		submarine.end_node = end_submarine_spawn
 		submarine.t = t
 		
 		j += 1

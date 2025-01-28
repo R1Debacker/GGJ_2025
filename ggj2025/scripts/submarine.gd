@@ -7,15 +7,15 @@ class_name Submarine
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var current_oxygen_level := 0.0
-var current_shrimp : CharacterBody2D = null
+@export var current_shrimp : CharacterBody2D = null
 var victory := false
 
-var start_position : Vector2
-var end_position : Vector2
-var t : float = 0
+@export var start_node : Node2D = null
+@export var end_node : Node2D = null
+@export var t : float = 0
 var use_lerp : bool :
 	get:
-		return start_position != null and end_position != null
+		return start_node != null and end_node != null
 var direction = 1
 @export var speed : float = 0.04
 var disable := false
@@ -24,9 +24,9 @@ var r : float = randf_range(0.9,1.1)
 
 func _ready() -> void:
 	if use_lerp:
-		animation_player.play("vertical_animation")
-	else:
 		animation_player.stop()
+	else:
+		animation_player.play("vertical_animation")
 	
 func _process(delta: float) -> void:
 	if self.disable:
@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 			direction = 1.0
 
 		# Interpolate between the positions
-		position = lerp(start_position, end_position,  t * t * (3.0 - 2.0 * t))
+		position = lerp(start_node.global_position, end_node.global_position,  t * t * (3.0 - 2.0 * t))
 	
 	var dist_to_shrimp : float = (self.global_position - self.current_shrimp.global_position).length()
 	if current_shrimp != null && dist_to_shrimp <= distance_to_fill && current_shrimp.has_bubble && current_shrimp.bubble.air_volume > 0.0:
