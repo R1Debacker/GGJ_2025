@@ -20,7 +20,7 @@ var direction = 1
 @export var speed : float = 0.04
 var disable := false
 var r : float = randf_range(0.9,1.1)
-@export var distance_to_fill : float = 60.0
+@export var distance_to_fill : float = 80.0
 
 func _ready() -> void:
 	if use_lerp:
