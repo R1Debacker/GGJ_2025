@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp1sxf2q8bgd7"]
+
+[ext_resource type="Script" path="res://scripts/courant_effect.gd" id="1_rfp2b"]
+
+[sub_resource type="Curve" id="Curve_axpci"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 0.3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_0rnbl"]
+offsets = PackedFloat32Array(0, 0.241379, 0.771552, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve2D" id="Curve2D_oxcjg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -72, 0, -21.6491, 0.264866, 21.6491, -0.264866, -37, -6, -34.487, -0.594603, 34.487, 0.594603, 25, 6, 0, 0, 0, 0, 71, -4)
+}
+point_count = 4
+
+[node name="CourantEffect" type="Line2D"]
+width_curve = SubResource("Curve_axpci")
+script = ExtResource("1_rfp2b")
+trail_speed = 0.008
+trail_color_gradient = SubResource("Gradient_0rnbl")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(3, 1)
+curve = SubResource("Curve2D_oxcjg")

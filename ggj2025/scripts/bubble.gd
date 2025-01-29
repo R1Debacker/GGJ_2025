@@ -43,11 +43,10 @@ func _on_body_entered(body: Node) -> void:
 		body.collect(self)
 
 func _burst_bubble():
+	invicibility = true
 	if self.air_volume > 18:
 		Game.souffrir_ok.play()
 	self.air_volume=0
-	collision_shape_2d.disabled = true
-	invicibility = true
 	animated_sprite_2d.play('Burst')
 	
 func _on_animated_sprite_2d_animation_finished() -> void:

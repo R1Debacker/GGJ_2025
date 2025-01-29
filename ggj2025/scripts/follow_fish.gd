@@ -14,7 +14,6 @@ var is_time_to_check_distance := false
 @onready var enemy_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var idle_movement: Timer = $IdleMovement
 @onready var going_back_timer: Timer = $GoingBackTimer
-@onready var in_radar_zone_time: Timer = $InRadarZoneTime
 @onready var radar_area: Area2D = $RadarArea
 @onready var check_distance_when_follow: Timer = $CheckDistanceWhenFollow
 

@@ -33,7 +33,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Burst",
-"speed": 8.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -56,7 +56,7 @@ script = ExtResource("1_wpub6")
 position = Vector2(0, 0.915)
 scale = Vector2(0.0417336, 0.0417335)
 sprite_frames = SubResource("SpriteFrames_3pqbv")
-animation = &"Burst"
+animation = &"Idle"
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
