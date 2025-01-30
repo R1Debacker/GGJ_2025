@@ -1,22 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://oxjd4j8n6ifb"]
+[gd_scene load_steps=4 format=3 uid="uid://oxjd4j8n6ifb"]
 
-[ext_resource type="PackedScene" uid="uid://y3degk013o8y" path="res://scenes/map.tscn" id="1_205tb"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_rdk0u"]
-[ext_resource type="PackedScene" uid="uid://b3em41xciomo0" path="res://scenes/oxygen_stock.tscn" id="3_5pqyt"]
-[ext_resource type="PackedScene" uid="uid://bjinpqjoklw6o" path="res://scenes/water_shader.tscn" id="5_o14ac"]
+[ext_resource type="PackedScene" uid="uid://dytwfectjrye5" path="res://scenes/new_map.tscn" id="2_tdsj5"]
 [ext_resource type="FontFile" uid="uid://b8i5ovcrke3e" path="res://HugoLeBo/UI_Menus/PlayfulTime-BLBB8.ttf" id="6_hu4rw"]
-[ext_resource type="PackedScene" path="res://scenes/dart_fish.tscn" id="7_isye8"]
-[ext_resource type="PackedScene" uid="uid://4qiggnmy0p87" path="res://scenes/big_fish.tscn" id="7_uxlgq"]
-[ext_resource type="PackedScene" path="res://scenes/follow_fish.tscn" id="8_l0hjm"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_rdk0u")
 
-[node name="Map" parent="." instance=ExtResource("1_205tb")]
-metadata/_edit_lock_ = true
-
-[node name="OxygenStock" parent="." instance=ExtResource("3_5pqyt")]
-position = Vector2(198, 906)
+[node name="NewMap" parent="." instance=ExtResource("2_tdsj5")]
 
 [node name="StartSubmarineSpawn" type="Marker2D" parent="."]
 position = Vector2(1687, 102)
@@ -40,18 +31,5 @@ theme_override_font_sizes/font_size = 500
 text = "5"
 
 [node name="Timer" type="Timer" parent="Label"]
-
-[node name="Sprite2D" parent="." instance=ExtResource("5_o14ac")]
-metadata/_edit_lock_ = true
-
-[node name="BigFish" parent="." instance=ExtResource("7_uxlgq")]
-position = Vector2(723, 495)
-
-[node name="DartFish" parent="." instance=ExtResource("7_isye8")]
-position = Vector2(1141, 868)
-metadata/_edit_lock_ = true
-
-[node name="FollowFish" parent="." instance=ExtResource("8_l0hjm")]
-position = Vector2(767, 273)
 
 [connection signal="timeout" from="Label/Timer" to="." method="_on_timer_timeout"]
