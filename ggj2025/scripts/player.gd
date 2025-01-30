@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 	var target = self.global_position - self.velocity.normalized()
 	self.look_at(target)
 	
-	if self.velocity.length() > 600 and self.player_sprite.animation != "dash":
+	if self.velocity.length() > 500 and self.player_sprite.animation != "dash":
 		self.player_sprite.play("dash")
 	if self.player_sprite.animation == "dash" and self.velocity.length() > 450:
 		pass
