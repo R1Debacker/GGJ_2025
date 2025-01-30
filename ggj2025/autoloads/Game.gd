@@ -21,11 +21,10 @@ var turn :int =0
 
 var avail_colors := [
 	Color.LIGHT_CORAL,
-	Color.CORNFLOWER_BLUE,
-	Color.GREEN,
-	Color.CORAL,
+	Color.SEA_GREEN,
+	Color.CHOCOLATE,
 	Color.BLACK,
-	Color.ALICE_BLUE,
+	Color.WHITE,
 	Color.YELLOW,
 	Color.DARK_MAGENTA,
 	Color.DARK_ORANGE,
@@ -39,7 +38,7 @@ var players_color : Array = []
 var nb_players : int :
 	get:
 		return players.size()
-const MAX_PLAYER := 10
+const MAX_PLAYER := 9
 var target_oxygen_level := 1000.0
 
 
