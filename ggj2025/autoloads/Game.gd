@@ -41,6 +41,12 @@ var nb_players : int :
 const MAX_PLAYER := 9
 var target_oxygen_level := 1000.0
 
+var current_scene : Node2D :
+	get:
+		if current_scene == null:
+			return get_tree().current_scene
+		else:
+			return current_scene
 
 func _on_timer_timeout() -> void:
 	if turn ==0:

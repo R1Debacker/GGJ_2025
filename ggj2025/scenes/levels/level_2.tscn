@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6ipigv7nq3pc"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_0oare"]
+[ext_resource type="PackedScene" uid="uid://y3degk013o8y" path="res://scenes/map.tscn" id="2_samas"]
+[ext_resource type="PackedScene" uid="uid://b3em41xciomo0" path="res://scenes/oxygen_stock.tscn" id="3_tw5sr"]
+[ext_resource type="FontFile" uid="uid://b8i5ovcrke3e" path="res://HugoLeBo/UI_Menus/PlayfulTime-BLBB8.ttf" id="4_15gg0"]
+[ext_resource type="PackedScene" uid="uid://bjinpqjoklw6o" path="res://scenes/water_shader.tscn" id="5_fku4f"]
+[ext_resource type="PackedScene" uid="uid://4qiggnmy0p87" path="res://scenes/big_fish.tscn" id="6_imcqq"]
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_0oare")
+
+[node name="Map" parent="." instance=ExtResource("2_samas")]
+metadata/_edit_lock_ = true
+
+[node name="BigFish" parent="." instance=ExtResource("6_imcqq")]
+position = Vector2(765, 501)
+
+[node name="OxygenStock" parent="." instance=ExtResource("3_tw5sr")]
+position = Vector2(197, 904)
+
+[node name="StartSubmarineSpawn" type="Marker2D" parent="."]
+position = Vector2(1687, 102)
+gizmo_extents = 80.0
+
+[node name="EndSubmarineSpawn" type="Marker2D" parent="."]
+position = Vector2(1727, 921)
+gizmo_extents = 80.0
+
+[node name="SubmarineContainer" type="Node2D" parent="."]
+
+[node name="PlayersContainer" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 816.0
+offset_top = 226.0
+offset_right = 1030.0
+offset_bottom = 859.0
+theme_override_fonts/font = ExtResource("4_15gg0")
+theme_override_font_sizes/font_size = 500
+text = "5"
+
+[node name="Timer" type="Timer" parent="Label"]
+
+[node name="Sprite2D" parent="." instance=ExtResource("5_fku4f")]
+metadata/_edit_lock_ = true
+
+[connection signal="timeout" from="Label/Timer" to="." method="_on_timer_timeout"]

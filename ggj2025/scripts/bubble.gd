@@ -69,7 +69,7 @@ func split():
 	var new_air_vol = self.air_volume * SPLIT_KEEP_PERCENT
 	var lost_air_vol = self.air_volume * (1-SPLIT_KEEP_PERCENT)
 	self.set_volume(new_air_vol)
-	Bubble.spawn_bubble(get_tree().current_scene, self.global_position, lost_air_vol)
+	Bubble.spawn_bubble(Game.current_scene, self.global_position, lost_air_vol)
 
 static func spawn_bubble(parent: Node2D, position: Vector2, bubble_vol: float, moving_bubble=true):	
 	var current_bubble = null
