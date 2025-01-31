@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://buac86mfls7xx"]
 
-[ext_resource type="Script" path="res://autoloads/Game.gd" id="1_06ibk"]
+[ext_resource type="Script" path="res://autoloads/game.gd" id="1_06ibk"]
 [ext_resource type="AudioStream" uid="uid://ctx0djew58i1k" path="res://HugoLeBo/UI_Menus/bubbles_A#_major.wav" id="2_bl4pm"]
 [ext_resource type="AudioStream" uid="uid://3e4n06c0xkli" path="res://assets/sprites/SFX/Pas mal musique fond.mp3" id="3_nlste"]
 [ext_resource type="AudioStream" uid="uid://dl0xmt1gltwk5" path="res://assets/sprites/SFX/Borne 49.3 a la con.mp3" id="3_ryfkl"]
