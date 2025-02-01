@@ -45,4 +45,12 @@ text = "5"
 [node name="Sprite2D" parent="." instance=ExtResource("5_fku4f")]
 metadata/_edit_lock_ = true
 
+[node name="WinSubmarineRespawnStart" type="Marker2D" parent="."]
+position = Vector2(-386, 570)
+gizmo_extents = 80.0
+
+[node name="WinSubmarineRespawnEnd" type="Marker2D" parent="."]
+position = Vector2(2254, 553)
+gizmo_extents = 80.0
+
 [connection signal="timeout" from="Label/Timer" to="." method="_on_timer_timeout"]

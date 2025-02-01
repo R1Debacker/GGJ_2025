@@ -2989,6 +2989,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_na64s")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MapSelection"]
+custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -3021,7 +3022,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_l6w4u")
 theme_override_styles/normal = SubResource("StyleBoxFlat_a1vxy")
 text = "Level 2"
 
-[node name="Back" type="Button" parent="PanelContainer/MapSelection/VBoxContainer"]
+[node name="Menu" type="Button" parent="PanelContainer/MapSelection/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -3030,10 +3031,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_3n64s")
 theme_override_styles/hover = SubResource("StyleBoxFlat_b5hud")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_l6w4u")
 theme_override_styles/normal = SubResource("StyleBoxFlat_a1vxy")
-text = "Back"
+text = "Menu"
 
 [node name="WaterShader" parent="." instance=ExtResource("2_yrhn7")]
 
 [connection signal="pressed" from="PanelContainer/MapSelection/VBoxContainer/Level 1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="PanelContainer/MapSelection/VBoxContainer/Level 2" to="." method="_on_level_2_pressed"]
-[connection signal="pressed" from="PanelContainer/MapSelection/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="PanelContainer/MapSelection/VBoxContainer/Menu" to="." method="_on_menu_pressed"]

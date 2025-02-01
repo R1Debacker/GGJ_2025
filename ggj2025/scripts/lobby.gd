@@ -56,6 +56,5 @@ func _on_level_1_pressed() -> void:
 func _on_level_2_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/levels/level_2.tscn")
 
-func _on_back_pressed() -> void:
-	map_selection.visible = not map_selection.visible
-	game_view.material.set_shader_parameter("blur_size", 0)
+func _on_menu_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

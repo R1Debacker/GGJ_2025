@@ -6,6 +6,8 @@ extends Node2D
 @onready var submarine_container: Node2D = $SubmarineContainer
 @onready var label: Label = $Label
 @onready var timer: Timer = $Label/Timer
+@onready var win_submarine_respawn_start: Marker2D = $WinSubmarineRespawnStart
+@onready var win_submarine_respawn_end: Marker2D = $WinSubmarineRespawnEnd
 
 @export var wait_time: int = 5
 
@@ -43,6 +45,7 @@ func init_level():
 		submarine.global_position = submarine_position
 		submarine.get_node("Localposition/VictoryPosition/Sprite2D").self_modulate = player.player.color
 		Game.submarines.append(submarine)
+		submarine.player_win.connect(_on_submarine_win)
 		submarine.current_shrimp = player.player
 		submarine.start_node = start_submarine_spawn
 		submarine.end_node = end_submarine_spawn
@@ -66,3 +69,18 @@ func _on_timer_timeout() -> void:
 		Game.okaaaaay_letsgo.play()
 	else:
 		Game.beep.play()
+
+func _on_submarine_win(old_submarine : Submarine):
+	## instanciate submarine
+	var submarine: Submarine  = Game.SUBMARINE.instantiate()
+	submarine_container.add_child(submarine)
+	submarine.animation_player.stop()
+	submarine.position = win_submarine_respawn_start.global_position
+	submarine.get_node("Localposition/VictoryPosition/Sprite2D").self_modulate = old_submarine.current_shrimp.color
+	submarine.start_node = win_submarine_respawn_start
+	submarine.end_node = win_submarine_respawn_end
+	submarine.scale = submarine.scale * 4
+	submarine.t = 0
+	submarine.speed = 0.08
+	submarine.current_oxygen_level = old_submarine.current_oxygen_level
+	submarine.z_index = 9 #just before water shader

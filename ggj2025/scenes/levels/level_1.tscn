@@ -32,4 +32,12 @@ text = "5"
 
 [node name="Timer" type="Timer" parent="Label"]
 
+[node name="WinSubmarineRespawnStart" type="Marker2D" parent="."]
+position = Vector2(-386, 570)
+gizmo_extents = 80.0
+
+[node name="WinSubmarineRespawnEnd" type="Marker2D" parent="."]
+position = Vector2(2254, 553)
+gizmo_extents = 80.0
+
 [connection signal="timeout" from="Label/Timer" to="." method="_on_timer_timeout"]

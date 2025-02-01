@@ -19,6 +19,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Localposition/VictoryPosition:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_sdvu8"]
 resource_name = "vertical_animation"
@@ -47,10 +59,10 @@ tracks/0/path = NodePath("Localposition/VictoryPosition:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1.1, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(500, 0)]
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(500, 0), Vector2(500, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -77,7 +89,6 @@ modulate = Color(0.975542, 0.989181, 0.901458, 1)
 scale = Vector2(2, 2)
 script = ExtResource("1_uexf5")
 filling_speed = 8.0
-target_oxygen_level = 100.0
 
 [node name="Localposition" type="Node2D" parent="."]
 
